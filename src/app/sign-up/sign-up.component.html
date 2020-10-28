@@ -1,0 +1,47 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <label>
+    First Name:
+    <br/>
+      <input type="text" formControlName="firstName" required/>
+  </label>
+  <br/>
+  <label>
+    Last Name:
+    <br/>
+      <input type="text" formControlName="lastName" required/>
+  </label>
+  <br/>
+  <label>
+    Email:
+    <br/>
+    <input type="email" formControlName="email" required/>
+  </label>
+  <br/>
+  <label>
+    Password:
+    <br/>
+    <input type="password" formControlName="password" required/>
+  </label>
+  <br/>
+  <label>
+    Confirm Password:
+    <br/>
+    <input type="password" formControlName="confirmPassword" required/>
+  </label>
+  <br/>
+  <label>
+    Role:
+    <select formControlName="role" required>
+      <option value="Frontend">Frontend</option>
+      <option value="Backend">Backend</option>
+      <option value="Quality Assurance">Quality Assurance</option>
+      <option value="User Interface">User Interface</option>
+      <option value="Business Analyst">Business Analyst</option>
+      <option value="Project Manager">Project Manager</option>
+    </select>
+  </label>
+  <br/>
+  <button type="submit" [disabled]="!userForm.valid" class="registerButton">
+    Register
+  </button>
+</form>
