@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {Validators} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,19 +9,29 @@ import { FormBuilder } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+  }
+
   userForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    email: ['', Validators.required],
+    firstName: ['', [Validators.required, Validators.maxLength(20)]],
+    lastName: ['', [Validators.required, Validators.maxLength(20)]],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
     role: ['', Validators.required]
   });
+  passwordsMatch = true;
+
   ngOnInit(): void {
   }
-  onSubmit(): void{
-    console.warn(this.userForm.value);
+
+  onSubmit(): void {
+    if (this.userForm.value.password === this.userForm.value.confirmPassword) {
+      this.passwordsMatch = true;
+      console.warn(this.userForm.value);
+    } else {
+      this.passwordsMatch = false;
+    }
   }
 
 }

@@ -1,3 +1,4 @@
+<h5 *ngIf="!passwordsMatch">Passwords do not match</h5>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <label>
     First Name:
@@ -20,18 +21,18 @@
   <label>
     Password:
     <br/>
-    <input type="password" formControlName="password" required/>
+    <input type="password" formControlName="password" required minlength="6"/>
   </label>
   <br/>
   <label>
     Confirm Password:
     <br/>
-    <input type="password" formControlName="confirmPassword" required/>
+    <input type="password" formControlName="confirmPassword" required minlength="6"/>
   </label>
   <br/>
-  <label>
+  <label class="roles">
     Role:
-    <select formControlName="role" required>
+    <select formControlName="role" required class="roles">
       <option value="Frontend">Frontend</option>
       <option value="Backend">Backend</option>
       <option value="Quality Assurance">Quality Assurance</option>
