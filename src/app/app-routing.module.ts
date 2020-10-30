@@ -6,6 +6,8 @@ import {LoginComponent} from './login/login.component';
 import {UsersComponent} from './users/users.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 import {AddUserComponent} from './add-user/add-user.component';
+import {TeamComponent} from './team/team.component';
+import {AddTeamComponent} from './add-team/add-team.component';
 
 const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
@@ -14,7 +16,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'users', component: UsersComponent},
   {path: 'user-detail/:id', component: UserDetailComponent},
-  {path: 'add-user', component: AddUserComponent}
+  {path: 'add-user', component: AddUserComponent},
+  {path: 'teams', component: TeamComponent},
+  {path: 'add-team', component: AddTeamComponent}
 ];
 
 @NgModule({
