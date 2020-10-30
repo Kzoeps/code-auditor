@@ -13,7 +13,6 @@ export class DashboardComponent implements OnInit {
   }
 
   users: User[];
-  user: User;
 
   ngOnInit(): void {
     this.getUsers();
@@ -23,4 +22,5 @@ export class DashboardComponent implements OnInit {
     this.userService.getUsers()
       .subscribe(users => this.users = users);
   }
+
 }

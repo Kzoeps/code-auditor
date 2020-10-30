@@ -39,6 +39,20 @@ export class UserService {
       );
   }
 
+  getUserById(id: number): Observable<User> {
+    const url = `${this.usersUrl}/${id}`;
+    return this.http.get<User>(url)
+      .pipe(
+        catchError(this.handleError<User>(`getUserById; id = ${id}`))
+      );
+  }
+  updateUser(user: User): Observable<User> {
+    const url = `${this.usersUrl}/${user.id}`;
+    return this.http.put<User>(url, user, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<any>('updateHero'))
+      );
+  }
   // tslint:disable-next-line:typedef
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

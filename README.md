@@ -4,13 +4,16 @@ This is my project for the SELISE phase 2 interview. The code audit management a
 
 ## Development server
 
-Run `ng serve --open` for a dev server which will automatically navigate to `https://localhost:4200`. The app will automatically reload if you change any of the source files.
+First run `json-server --watch db.json` to run the backend server.
+
+Then run `ng serve --open` in another terminal tab for a dev server which will automatically navigate to `https://localhost:4200`. The app will automatically reload if you change any of the source files.
 
 ## TO-DOs
 
 - [X] Build sign up form
 - [X] Build Login Form
-- [ ] Hook it up with the backend
+- [X] Hook it up with the backend
+- [ ] Build view for list of userss
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.

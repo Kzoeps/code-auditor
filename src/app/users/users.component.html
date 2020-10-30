@@ -1,1 +1,10 @@
-<p>users works!</p>
+<div *ngFor="let user of users">
+  <ul>
+    <li>
+      <a routerLink="/user-detail/{{user.id}}">
+        {{user.id}} : {{user.firstName}} {{user.lastName}}
+      </a>
+    </li>
+    <br/>
+  </ul>
+</div>

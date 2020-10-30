@@ -2,11 +2,11 @@
   "users": [
     {
       "id": 1,
-      "firstName": "Karma",
+      "firstName": "Thinley",
       "lastName": "Yoezer",
       "email": "kzoepa@gmail.com",
       "password": "karma123",
-      "role": "Frontend"
+      "role": "Quality Assurance"
     },
     {
       "id": 2,

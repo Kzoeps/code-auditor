@@ -1,0 +1,31 @@
+<div *ngIf="user">
+  <h3>{{user.firstName}} {{user.lastName}} Details</h3>
+  <p>User ID : {{user.id}}</p>
+  <label class="input">
+    First Name :
+    <br/>
+    <input class="input" [(ngModel)]="user.firstName" placeholder="firstName">
+  </label>
+  <br/>
+  <label>
+    Last Name :
+    <br/>
+    <input class="input" [(ngModel)]="user.lastName" placeholder="lastName">
+  </label>
+  <br/>
+  <label>
+    Email :
+    <br/>
+    <input class="input" [(ngModel)]="user.email" placeholder="email">
+  </label>
+  <br/>
+  <label>
+    <span class="label">Role :</span>
+    <br/>
+    <select required [(ngModel)]="user.role">
+      <option *ngFor="let role of roles" [value]="role" [selected]="user.role === role">{{role}}</option>
+    </select>
+  </label>
+  <br/>
+  <button (click)="updateUser()">Update</button>
+</div>

@@ -26,8 +26,7 @@ export class SignUpComponent implements OnInit {
     role: ['', Validators.required]
   });
   passwordsMatch = true;
-  formValid = true;
-
+  isEmailValid = true;
   ngOnInit(): void {
   }
 
@@ -41,11 +40,13 @@ export class SignUpComponent implements OnInit {
           this.doesUserExist = user;
           if (this.doesUserExist.length !== 0) {
             console.log('User already exists');
+            this.isEmailValid = false;
           } else {
             this.userService.registerUser(this.user)
               .subscribe(() => {
                 console.log('user registered');
               });
+            this.isEmailValid = true;
           }
         });
     } else {
