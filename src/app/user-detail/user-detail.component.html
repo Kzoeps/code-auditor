@@ -1,22 +1,23 @@
+<app-nav></app-nav>
 <div *ngIf="user">
   <h3>{{user.firstName}} {{user.lastName}} Details</h3>
   <p>User ID : {{user.id}}</p>
   <label class="input">
     First Name :
     <br/>
-    <input class="input" [(ngModel)]="user.firstName" placeholder="firstName">
+    <input class="input" [(ngModel)]="user.firstName" placeholder="firstName" required>
   </label>
   <br/>
   <label>
     Last Name :
     <br/>
-    <input class="input" [(ngModel)]="user.lastName" placeholder="lastName">
+    <input class="input" [(ngModel)]="user.lastName" placeholder="lastName" required>
   </label>
   <br/>
   <label>
     Email :
     <br/>
-    <input class="input" [(ngModel)]="user.email" placeholder="email">
+    <input class="input" [(ngModel)]="user.email" placeholder="email" required>
   </label>
   <br/>
   <label>

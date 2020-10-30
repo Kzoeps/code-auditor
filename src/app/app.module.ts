@@ -10,6 +10,8 @@ import {LoginComponent} from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './users/users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { NavComponent } from './nav/nav.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     DashboardComponent,
     LoginComponent,
     UsersComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    NavComponent,
+    AddUserComponent
   ],
     imports: [
         BrowserModule,

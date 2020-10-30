@@ -1,3 +1,4 @@
+<app-nav></app-nav>
 <h5 *ngIf="!passwordsMatch">Passwords do not match</h5>
 <h5 *ngIf="!isEmailValid">Email already in use</h5>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
@@ -44,6 +45,7 @@
   </label>
   <br/>
   <button type="submit" [disabled]="!userForm.valid" class="registerButton">
-    Register
+    <span *ngIf="fromAddUser">Add User</span>
+    <span *ngIf="!fromAddUser">Register</span>
   </button>
 </form>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Validators} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {UserService} from '../user.service';
@@ -11,6 +11,7 @@ import {User} from '../user';
 })
 export class SignUpComponent implements OnInit {
 
+  @Input() fromAddUser: boolean;
   user: User;
   doesUserExist: User[];
 
@@ -27,6 +28,7 @@ export class SignUpComponent implements OnInit {
   });
   passwordsMatch = true;
   isEmailValid = true;
+
   ngOnInit(): void {
   }
 

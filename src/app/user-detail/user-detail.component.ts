@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../user.service';
 import {User} from '../user';
-import {FormBuilder, Validators} from '@angular/forms';
 
+// TODO: Validations to make sure min length and also no blanks
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',

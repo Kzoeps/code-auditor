@@ -3,31 +3,31 @@
     {
       "id": 1,
       "firstName": "Thinley",
-      "lastName": "Yoezer",
+      "lastName": "Dhendup",
       "email": "kzoepa@gmail.com",
       "password": "karma123",
       "role": "Quality Assurance"
     },
     {
       "id": 2,
-      "firstName": "K",
-      "lastName": "Zoeps",
-      "email": "kzoeps@gmail.com",
+      "firstName": "Yeshey",
+      "lastName": "Lhamo",
+      "email": "yl@gmail.com",
       "password": "karma123",
-      "role": "Backend"
+      "role": "Project Manager"
     },
     {
-      "firstName": "karma",
-      "lastName": "yoez",
-      "email": "kzoeps@gmail.com",
+      "firstName": "jigme",
+      "lastName": "nobs",
+      "email": "jnobs@gmail.com",
       "password": "kzoepa123",
       "confirmPassword": "kzoepa123",
-      "role": "Frontend",
+      "role": "Backend",
       "id": 3
     },
     {
       "firstName": "karma",
-      "lastName": "k",
+      "lastName": "karma",
       "email": "k@gmail.com",
       "password": "kop123",
       "confirmPassword": "kop123",
