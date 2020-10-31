@@ -25,6 +25,8 @@ export class AddTeamComponent implements OnInit {
     teamMembers: [[''], [Validators.required]],
   });
 
+  errorMessage: string;
+
   ngOnInit(): void {
     this.getUsers();
   }
@@ -32,14 +34,28 @@ export class AddTeamComponent implements OnInit {
   onSubmit(): void {
     this.team = this.teamForm.value;
     const id = +this.team.teamLead;
+    this.team.teamName = this.team.teamName.trim().toLowerCase();
     if (id) {
       this.userService.getUserById(id)
         .subscribe((user) => {
           this.teamLead = user;
           this.team.teamLead = this.teamLead;
-          this.teamService.createTeam(this.team)
-            .subscribe();
+          this.teamLead.leadOnTeams.push(this.team.teamName);
+          this.teamService.getTeamByName(this.team.teamName)
+            .subscribe(team => {
+              if (team.length !== 0) {
+                this.errorMessage = 'Team Name already exists!';
+              } else {
+                this.teamService.createTeam(this.team)
+                  .subscribe(() => {
+                    this.userService.updateUser(this.teamLead)
+                      .subscribe();
+                  });
+              }
+            });
         });
+    } else {
+      this.errorMessage = 'Team Lead doesnt exist in used db';
     }
   }
 

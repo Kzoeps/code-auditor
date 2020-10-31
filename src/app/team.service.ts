@@ -39,6 +39,13 @@ export class TeamService {
       );
   }
 
+  getTeamByName(teamName: string): Observable<Team[]> {
+    const url = `${this.teamsUrl}/?teamName=${teamName}`;
+    return this.http.get<Team[]>(url)
+      .pipe(
+        catchError(this.handleError<Team[]>(`getTeamByName; name = ${teamName}`, []))
+      );
+  }
   // tslint:disable-next-line:typedef
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

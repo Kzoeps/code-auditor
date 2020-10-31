@@ -28,5 +28,11 @@
     </select>
   </label>
   <br/>
+  <br/>
+  <label>
+    <span class="" *ngFor="let team of user.leadOnTeams">Teams leading/led : {{team}} </span>
+  </label>
+  <br/>
+  <br/>
   <button (click)="updateUser()">Update</button>
 </div>

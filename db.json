@@ -1,67 +1,38 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstName": "Thinley",
-      "lastName": "Dhendup",
-      "email": "kzoepa@gmail.com",
-      "password": "karma123",
-      "role": "Quality Assurance"
-    },
-    {
-      "id": 2,
-      "firstName": "Yeshey",
-      "lastName": "Lhamo",
-      "email": "yl@gmail.com",
-      "password": "karma123",
-      "role": "Project Manager"
-    },
-    {
-      "firstName": "jigme",
-      "lastName": "nobs",
-      "email": "jnobs@gmail.com",
-      "password": "kzoepa123",
-      "confirmPassword": "kzoepa123",
-      "role": "Backend",
-      "id": 3
-    },
-    {
       "firstName": "karma",
-      "lastName": "karma",
-      "email": "k@gmail.com",
-      "password": "kop123",
-      "confirmPassword": "kop123",
-      "role": "Backend",
-      "id": 4
-    },
-    {
-      "firstName": "25th",
-      "lastName": "Night",
-      "email": "yoru@gmail.com",
-      "password": "togcomeback",
-      "confirmPassword": "togcomeback",
-      "role": "Project Manager",
-      "id": 5
+      "lastName": "yoezer",
+      "email": "kzoepa@gmail.com",
+      "password": "kopa123",
+      "confirmPassword": "kopa123",
+      "role": "Frontend",
+      "leadOnTeams": [
+        "gongphel labs"
+      ],
+      "memberOnTeams": [],
+      "id": 1
     }
   ],
   "team": [
     {
-      "teamName": "Gonghpel Labs",
-      "dateEstd": "2020-10-14",
+      "teamName": "gongphel labs",
+      "dateEstd": "2020-10-17",
       "teamLead": {
         "firstName": "karma",
-        "lastName": "karma",
-        "email": "k@gmail.com",
-        "password": "kop123",
-        "confirmPassword": "kop123",
-        "role": "Backend",
-        "id": 4
+        "lastName": "yoezer",
+        "email": "kzoepa@gmail.com",
+        "password": "kopa123",
+        "confirmPassword": "kopa123",
+        "role": "Frontend",
+        "leadOnTeams": [
+          "gongphel labs"
+        ],
+        "memberOnTeams": [],
+        "id": 1
       },
-      "teamMembers": "Jigme Tashi",
+      "teamMembers": "Thinley g",
       "id": 1
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
