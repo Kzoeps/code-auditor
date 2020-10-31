@@ -32,14 +32,15 @@ export class AddTeamComponent implements OnInit {
   onSubmit(): void {
     this.team = this.teamForm.value;
     const id = +this.team.teamLead;
-    this.userService.getUserById(id)
-      .subscribe((user) => {
-        this.teamLead = user;
-        this.team.teamLead = this.teamLead;
-        console.log(this.team);
-        this.teamService.createTeam(this.team)
-          .subscribe();
-      });
+    if (id) {
+      this.userService.getUserById(id)
+        .subscribe((user) => {
+          this.teamLead = user;
+          this.team.teamLead = this.teamLead;
+          this.teamService.createTeam(this.team)
+            .subscribe();
+        });
+    }
   }
 
   getUsers(): void {

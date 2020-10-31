@@ -46,29 +46,8 @@
   ],
   "team": [
     {
-      "id": 1,
-      "teamName": "codingers",
-      "dateEstd": "12/12/20",
-      "teamLead": "Karma Yoez",
-      "teamMembers": "THis guy and that guy"
-    },
-    {
-      "teamName": "Hexagons",
-      "dateEstd": "2020-10-15",
-      "teamLead": "Karma Yoezer",
-      "teamMembers": "Thinley choden",
-      "id": 2
-    },
-    {
-      "teamName": "The Coop",
-      "dateEstd": "2020-10-15",
-      "teamLead": "Thinley Dhendup",
-      "teamMembers": "Karma Yoez",
-      "id": 3
-    },
-    {
-      "teamName": "grep",
-      "dateEstd": "2020-10-29",
+      "teamName": "Gonghpel Labs",
+      "dateEstd": "2020-10-14",
       "teamLead": {
         "firstName": "karma",
         "lastName": "karma",
@@ -78,41 +57,8 @@
         "role": "Backend",
         "id": 4
       },
-      "teamMembers": "GGG",
-      "id": 4
-    },
-    {
-      "teamName": "grep",
-      "dateEstd": "2020-10-29",
-      "teamMembers": "GGG",
-      "id": 5
-    },
-    {
-      "teamName": "grep",
-      "dateEstd": "2020-10-29",
-      "teamMembers": "GGG",
-      "id": 6
-    },
-    {
-      "teamName": "dsaf",
-      "dateEstd": "2020-10-01",
-      "teamLead": {
-        "firstName": "karma",
-        "lastName": "karma",
-        "email": "k@gmail.com",
-        "password": "kop123",
-        "confirmPassword": "kop123",
-        "role": "Backend",
-        "id": 4
-      },
-      "teamMembers": "asdf",
-      "id": 7
-    },
-    {
-      "teamName": "dsaf",
-      "dateEstd": "2020-10-01",
-      "teamMembers": "asdf",
-      "id": 8
+      "teamMembers": "Jigme Tashi",
+      "id": 1
     }
   ],
   "profile": {
