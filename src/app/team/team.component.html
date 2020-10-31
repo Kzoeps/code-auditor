@@ -1,0 +1,10 @@
+<app-nav></app-nav>
+<div *ngFor="let team of teams">
+  <ul>
+    <li>
+      <a routerLink="/team-detail/{{team.id}}">
+        {{team.teamName}}
+      </a>
+    </li>
+  </ul>
+</div>

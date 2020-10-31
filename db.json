@@ -1,9 +1,73 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Thinley",
+      "lastName": "Dhendup",
+      "email": "kzoepa@gmail.com",
+      "password": "karma123",
+      "role": "Quality Assurance"
+    },
+    {
+      "id": 2,
+      "firstName": "Yeshey",
+      "lastName": "Lhamo",
+      "email": "yl@gmail.com",
+      "password": "karma123",
+      "role": "Project Manager"
+    },
+    {
+      "firstName": "jigme",
+      "lastName": "nobs",
+      "email": "jnobs@gmail.com",
+      "password": "kzoepa123",
+      "confirmPassword": "kzoepa123",
+      "role": "Backend",
+      "id": 3
+    },
+    {
+      "firstName": "karma",
+      "lastName": "karma",
+      "email": "k@gmail.com",
+      "password": "kop123",
+      "confirmPassword": "kop123",
+      "role": "Backend",
+      "id": 4
+    },
+    {
+      "firstName": "25th",
+      "lastName": "Night",
+      "email": "yoru@gmail.com",
+      "password": "togcomeback",
+      "confirmPassword": "togcomeback",
+      "role": "Project Manager",
+      "id": 5
+    }
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+  "team": [
+    {
+      "id": 1,
+      "teamName": "codingers",
+      "dateEstd": "12/12/20",
+      "teamLead": "Karma Yoez",
+      "teamMembers": "THis guy and that guy"
+    },
+    {
+      "teamName": "Hexagons",
+      "dateEstd": "2020-10-15",
+      "teamLead": "Karma Yoezer",
+      "teamMembers": "Thinley choden",
+      "id": 2
+    },
+    {
+      "teamName": "The Coop",
+      "dateEstd": "2020-10-15",
+      "teamLead": "Thinley Dhendup",
+      "teamMembers": "Karma Yoez",
+      "id": 3
+    }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "name": "typicode"
+  }
 }

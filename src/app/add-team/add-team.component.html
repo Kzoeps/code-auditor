@@ -1,0 +1,31 @@
+<app-nav></app-nav>
+<form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+  <label>
+    Team Name:
+    <br/>
+    <input type="text" formControlName="teamName" required/>
+  </label>
+  <br/>
+  <label>
+    Date Estd:
+    <br/>
+    <input type="date" formControlName="dateEstd" required/>
+  </label>
+  <br/>
+  <label>
+    Team Lead:
+    <br/>
+    <input type="text" formControlName="teamLead" required/>
+  </label>
+  <br/>
+  <label>
+    Team Members:
+    <br/>
+    <input type="text" formControlName="teamMembers" required/>
+  </label>
+  <br/>
+  <br/>
+  <button type="submit" [disabled]="!teamForm.valid">
+    Create Team
+  </button>
+</form>

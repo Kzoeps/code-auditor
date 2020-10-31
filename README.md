@@ -1,15 +1,19 @@
-# CodeAuditor
+# Code Auditor  (Karma Yoezer)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
+This is my project for the SELISE phase 2 interview. The code audit management app allows users to assign teams to audit work and to create memos. more details of it is saved as a pdf file in the root folder. 
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+First run `json-server --watch db.json` to run the backend server.
 
-## Code scaffolding
+Then run `ng serve --open` in another terminal tab for a dev server which will automatically navigate to `https://localhost:4200`. The app will automatically reload if you change any of the source files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## TO-DOs
 
+- [X] Build sign up form
+- [X] Build Login Form
+- [X] Hook it up with the backend
+- [ ] Build view for list of userss
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
