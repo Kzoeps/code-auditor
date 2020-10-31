@@ -17,16 +17,25 @@ export class TeamService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  getTeams(): Observable<Team[]>{
+  getTeams(): Observable<Team[]> {
     return this.http.get<Team[]>(this.teamsUrl)
       .pipe(
         catchError(this.handleError<Team[]>('getTeams', []))
       );
   }
+
   createTeam(team: Team): Observable<Team> {
     return this.http.post<Team>(this.teamsUrl, team, this.httpOptions)
       .pipe(
         catchError(this.handleError<Team>('createTeam'))
+      );
+  }
+
+  getTeam(id: number): Observable<Team> {
+    const url = `${this.teamsUrl}/${id}`;
+    return this.http.get<Team>(url)
+      .pipe(
+        catchError(this.handleError<Team>(`getTeam; id = ${id}`))
       );
   }
 

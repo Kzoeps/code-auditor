@@ -14,6 +14,7 @@ import { NavComponent } from './nav/nav.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { TeamComponent } from './team/team.component';
 import { AddTeamComponent } from './add-team/add-team.component';
+import { TeamDetailsComponent } from './team-details/team-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddTeamComponent } from './add-team/add-team.component';
     NavComponent,
     AddUserComponent,
     TeamComponent,
-    AddTeamComponent
+    AddTeamComponent,
+    TeamDetailsComponent
   ],
     imports: [
         BrowserModule,

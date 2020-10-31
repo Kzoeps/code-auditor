@@ -8,6 +8,7 @@ import {UserDetailComponent} from './user-detail/user-detail.component';
 import {AddUserComponent} from './add-user/add-user.component';
 import {TeamComponent} from './team/team.component';
 import {AddTeamComponent} from './add-team/add-team.component';
+import {TeamDetailsComponent} from './team-details/team-details.component';
 
 const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'user-detail/:id', component: UserDetailComponent},
   {path: 'add-user', component: AddUserComponent},
   {path: 'teams', component: TeamComponent},
-  {path: 'add-team', component: AddTeamComponent}
+  {path: 'add-team', component: AddTeamComponent},
+  {path: 'team-detail/:id', component: TeamDetailsComponent}
 ];
 
 @NgModule({
