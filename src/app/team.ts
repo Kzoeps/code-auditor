@@ -4,7 +4,7 @@ export interface Team {
   id: number;
   teamName: string;
   dateEstd: string;
-  teamLead: string;
+  teamLead: User;
   teamMembers: string;
 }
 

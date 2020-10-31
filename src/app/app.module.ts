@@ -37,6 +37,7 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
         HttpClientModule,
         FormsModule,
     ],
+  exports: [NavComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

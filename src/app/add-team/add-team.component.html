@@ -12,10 +12,17 @@
     <input type="date" formControlName="dateEstd" required/>
   </label>
   <br/>
+<!--  <label>-->
+<!--    Team Lead:-->
+<!--    <br/>-->
+<!--    <input type="text" formControlName="teamLead" required/>-->
+<!--  </label>-->
   <label>
-    Team Lead:
+    Team Lead :
     <br/>
-    <input type="text" formControlName="teamLead" required/>
+    <select required formControlName="teamLead">
+      <option *ngFor="let user of users" [value]="user.id">{{user.firstName}} {{user.lastName}}</option>
+    </select>
   </label>
   <br/>
   <label>
@@ -23,6 +30,7 @@
     <br/>
     <input type="text" formControlName="teamMembers" required/>
   </label>
+  <br/>
   <br/>
   <br/>
   <button type="submit" [disabled]="!teamForm.valid">
