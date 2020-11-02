@@ -6,6 +6,7 @@ import {User} from '../user';
 import {UserService} from '../user.service';
 
 // TODO: make finding user a function.
+// TODO: validate that team lead cannot be a team member;
 @Component({
   selector: 'app-add-team',
   templateUrl: './add-team.component.html',
@@ -57,10 +58,15 @@ export class AddTeamComponent implements OnInit {
               if (team.length !== 0) {
                 this.errorMessage = 'Team Name already exists!';
               } else {
+                this.userService.updateUser(this.teamLead)
+                  .subscribe();
+                for (const eachMember of this.teamMembers) {
+                  eachMember.memberOnTeams.push(this.team.teamName);
+                  this.userService.updateUser(eachMember)
+                    .subscribe();
+                }
                 this.teamService.createTeam(this.team)
                   .subscribe(() => {
-                    this.userService.updateUser(this.teamLead)
-                      .subscribe();
                   });
               }
             });

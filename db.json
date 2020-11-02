@@ -8,17 +8,18 @@
       "confirmPassword": "kopa123",
       "role": "Frontend",
       "leadOnTeams": [
-        "gongphel labs",
-        "crepes"
+        "aviato"
       ],
-      "memberOnTeams": [],
+      "memberOnTeams": [
+        "aviato"
+      ],
       "id": 1
     }
   ],
   "team": [
     {
-      "teamName": "gongphel labs",
-      "dateEstd": "2020-10-17",
+      "teamName": "aviato",
+      "dateEstd": "2020-10-10",
       "teamLead": {
         "firstName": "karma",
         "lastName": "yoezer",
@@ -27,29 +28,11 @@
         "confirmPassword": "kopa123",
         "role": "Frontend",
         "leadOnTeams": [
-          "gongphel labs"
+          "aviato"
         ],
-        "memberOnTeams": [],
-        "id": 1
-      },
-      "teamMembers": "Thinley g",
-      "id": 1
-    },
-    {
-      "teamName": "crepes",
-      "dateEstd": "2020-11-17",
-      "teamLead": {
-        "firstName": "karma",
-        "lastName": "yoezer",
-        "email": "kzoepa@gmail.com",
-        "password": "kopa123",
-        "confirmPassword": "kopa123",
-        "role": "Frontend",
-        "leadOnTeams": [
-          "gongphel labs",
-          "crepes"
+        "memberOnTeams": [
+          "aviato"
         ],
-        "memberOnTeams": [],
         "id": 1
       },
       "teamMembers": [
@@ -61,13 +44,15 @@
           "confirmPassword": "kopa123",
           "role": "Frontend",
           "leadOnTeams": [
-            "gongphel labs"
+            "aviato"
           ],
-          "memberOnTeams": [],
+          "memberOnTeams": [
+            "aviato"
+          ],
           "id": 1
         }
       ],
-      "id": 2
+      "id": 1
     }
   ]
 }
