@@ -5,6 +5,6 @@ export interface Team {
   teamName: string;
   dateEstd: string;
   teamLead: User;
-  teamMembers: string;
+  teamMembers: User[];
 }
 

@@ -5,6 +5,7 @@ import {TeamService} from '../team.service';
 import {User} from '../user';
 import {UserService} from '../user.service';
 
+// TODO: make finding user a function.
 @Component({
   selector: 'app-add-team',
   templateUrl: './add-team.component.html',
@@ -17,18 +18,27 @@ export class AddTeamComponent implements OnInit {
 
   users: User[];
   teamLead: User;
+  teamMembers: User[];
   team: Team;
   teamForm = this.fb.group({
     teamName: ['', [Validators.required]],
     dateEstd: ['', [Validators.required]],
     teamLead: ['', [Validators.required]],
-    teamMembers: [[''], [Validators.required]],
+    teamMembers: [[], [Validators.required]],
   });
-
   errorMessage: string;
 
   ngOnInit(): void {
     this.getUsers();
+  }
+
+  removeMember(id: number): void {
+    for (const eachMember of this.teamMembers) {
+      if (eachMember.id === id) {
+        const index = this.teamMembers.indexOf(eachMember);
+        this.teamMembers.splice(index, 1);
+      }
+    }
   }
 
   onSubmit(): void {
@@ -41,6 +51,7 @@ export class AddTeamComponent implements OnInit {
           this.teamLead = user;
           this.team.teamLead = this.teamLead;
           this.teamLead.leadOnTeams.push(this.team.teamName);
+          this.team.teamMembers = this.teamMembers;
           this.teamService.getTeamByName(this.team.teamName)
             .subscribe(team => {
               if (team.length !== 0) {
@@ -55,7 +66,31 @@ export class AddTeamComponent implements OnInit {
             });
         });
     } else {
-      this.errorMessage = 'Team Lead doesnt exist in used db';
+      this.errorMessage = 'Team Lead doesnt exist in user db';
+    }
+  }
+
+  addMember(): void {
+    const memberID = +this.teamForm.value.teamMembers;
+    if (this.teamMembers) {
+      let flag = false;
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.teamMembers.length; i++) {
+        if (this.teamMembers[i].id === memberID) {
+          flag = true;
+        }
+      }
+      if (!flag) {
+        this.userService.getUserById(memberID)
+          .subscribe(user => {
+            this.teamMembers.push(user);
+          });
+      }
+    } else {
+      this.userService.getUserById(memberID)
+        .subscribe(user => {
+          this.teamMembers = [user];
+        });
     }
   }
 

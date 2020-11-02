@@ -24,8 +24,19 @@
   <label>
     Team Members:
     <br/>
-    <input type="text" formControlName="teamMembers" required/>
+    <select required formControlName="teamMembers">
+      <option *ngFor="let user of users" [value]="user.id">
+        <span>{{user.firstName}} {{user.lastName}}</span>
+      </option>
+    </select>
+    <button type="button" class="addButton" (click)="addMember()">
+      Add To Team
+    </button>
   </label>
+  <div *ngFor="let member of teamMembers" class="teamMembers">
+    <div class="memberDescription">{{member.firstName}} {{member.lastName}}; id: {{member.id}}</div>
+    <div class="removeButton" (click)="removeMember(member.id)">X</div>
+  </div>
   <br/>
   <br/>
   <br/>
