@@ -1,10 +1,46 @@
+<!-- TODO: properly format the remove member button-->
 <app-nav></app-nav>
-<div *ngIf="team">
+<form *ngIf="team" [formGroup]="teamForm">
   <h3>{{team.teamName}} Details</h3>
-  <hr/>
-  <p>Team ID : {{team.id}}</p>
-  <p>Date of Formation : {{team.dateEstd | date}}</p>
-  <p>Team Name : {{team.teamName}}</p>
-  <p>Team Lead : {{team.teamLead.firstName | titlecase}} {{team.teamLead.lastName | titlecase}}, id : {{team.teamLead.id}}</p>
-  <p>Team Members : {{team.teamMembers}}</p>
-</div>
+  <h4 *ngIf="errorMessage">{{errorMessage}}</h4>
+  <label>
+    Team ID :
+    <br>
+    {{team.id}}
+  </label>
+  <br/>
+  <label>
+    Team Name :
+    <br/>
+    <input type="text" formControlName="teamName"  placeholder="team name">
+  </label>
+  <br/>
+  <label>
+    Date of Formation :
+    <br/>
+    <input type="text" formControlName="dateEstd" placeholder="date of estd">
+  </label>
+  <br/>
+  <label>
+    Team Lead :
+    <br/>
+    <select required formControlName="teamLead">
+      <option *ngFor="let user of users" [value]="user" [selected]="user.id===teamForm.value.teamLead.id">{{user.firstName}} {{user.lastName}}</option>
+    </select>
+  </label>
+  <br/>
+  <label>
+    Team Members :
+    <select formControlName="addTeamMember">
+      <option  *ngFor="let user of users" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
+    </select>
+    <button type="button" class="addButton" (click)="addMember()">
+      ADD TO TEAM
+    </button>
+  </label>
+  <div *ngFor="let member of team.teamMembers" class="teamMembers">
+    <span class="memberDescription">{{member.firstName | titlecase}} {{member.lastName | titlecase}}; ID: {{member.id}}</span> <span class="removeButton" (click)="removeMember(member.id)">X</span>
+  </div>
+  <br/>
+  <button class="updateButton" (click)="updateTeam()">Update</button>
+</form>

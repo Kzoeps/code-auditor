@@ -17,8 +17,8 @@ Then run `ng serve --open` in another terminal tab for a dev server which will a
 - [X] Build view for list of users
 - [X] Build view for list of teams
 - [ ] Build Edit teams view
-- [ ] Make team members an object of team
-- [ ] update user profile when added to team
+- [X] Make team members an object of users
+- [X] update user profile when added to team
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
