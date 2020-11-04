@@ -8,11 +8,10 @@
       "confirmPassword": "kopa123",
       "role": "Frontend",
       "leadOnTeams": [
-        "aviato",
-        "hundreds"
+        "aviato"
       ],
       "memberOnTeams": [
-        "aviato"
+        "thousands"
       ],
       "id": 1
     },
@@ -23,10 +22,10 @@
       "password": "hopscotch",
       "confirmPassword": "hopscotch",
       "role": "Quality Assurance",
-      "leadOnTeams": [],
-      "memberOnTeams": [
-        "hundreds"
+      "leadOnTeams": [
+        "thousands"
       ],
+      "memberOnTeams": [],
       "id": 2
     }
   ],

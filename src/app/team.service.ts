@@ -49,7 +49,7 @@ export class TeamService {
 
   updateTeam(team: Team): Observable<Team> {
     const url = `${this.teamsUrl}/${team.id}`;
-    return this.http.put<Team>(url, team, this.httpOptions)
+    return this.http.patch<Team>(url, team, this.httpOptions)
       .pipe(
         catchError(this.handleError<Team>(`updateTeam; teamID : ${team.id}`))
       );
