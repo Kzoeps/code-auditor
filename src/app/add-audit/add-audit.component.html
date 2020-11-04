@@ -1,0 +1,33 @@
+<app-nav></app-nav>
+<form [formGroup]="auditForm">
+  <h4 *ngIf="errorMessage">{{errorMessage}}</h4>
+  <label>
+    Auditee :
+    <br/>
+    <select required formControlName="auditee">
+      <option *ngFor="let team of teams" [ngValue]="team">{{team.teamName | titlecase}}</option>
+    </select>
+  </label>
+  <br/>
+  <label>
+    Auditor :
+    <br/>
+    <select required formControlName="auditorToAdd">
+      <option *ngFor="let team of teams" [ngValue]="team">
+        {{team.teamName | titlecase}}
+      </option>
+    </select>
+  </label>
+  <br/>
+  <label>
+    Date Of Audit Start :
+    <br/>
+    <input required formControlName="startDate" type="date" placeholder="audit start date"/>
+  </label>
+  <br/>
+  <label>
+    Status :
+    <br/>
+    <span>{{auditForm.value.status}}</span>
+  </label>
+</form>

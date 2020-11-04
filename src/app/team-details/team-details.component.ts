@@ -123,7 +123,7 @@ export class TeamDetailsComponent implements OnInit {
     unupdatedTeamLead.leadOnTeams.splice(previousTeamNameIndex, 1);
     if (this.team.teamLead.id !== teamForm.teamLead.id) {
       teamForm.teamLead.leadOnTeams.push(teamName);
-      delete(teamForm.teamLead.memberOnTeams);
+      delete (teamForm.teamLead.memberOnTeams);
       this.userService.updateUser(teamForm.teamLead)
         .subscribe();
       const tempId = this.team.id;
@@ -133,7 +133,7 @@ export class TeamDetailsComponent implements OnInit {
       console.log(this.team, 'addTeamToLead()');
     } else {
       unupdatedTeamLead.leadOnTeams.push(teamName);
-      delete(unupdatedTeamLead.memberOnTeams);
+      delete (unupdatedTeamLead.memberOnTeams);
       this.userService.updateUser(unupdatedTeamLead)
         .subscribe();
       const tempId = this.team.id;

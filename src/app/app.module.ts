@@ -15,7 +15,8 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { TeamComponent } from './team/team.component';
 import { AddTeamComponent } from './add-team/add-team.component';
 import { TeamDetailsComponent } from './team-details/team-details.component';
-import { EditTeamComponent } from './edit-team/edit-team.component';
+import { AuditComponent } from './audit/audit.component';
+import { AddAuditComponent } from './add-audit/add-audit.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EditTeamComponent } from './edit-team/edit-team.component';
     TeamComponent,
     AddTeamComponent,
     TeamDetailsComponent,
-    EditTeamComponent
+    AuditComponent,
+    AddAuditComponent,
   ],
     imports: [
         BrowserModule,
