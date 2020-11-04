@@ -21,6 +21,7 @@ export class TeamDetailsComponent implements OnInit {
   errorMessage: string;
   team: Team;
   users: User[];
+  teamMembersTeamForm: User[];
   teamForm = this.fb.group({
     teamName: ['', [Validators.required]],
     dateEstd: ['', [Validators.required]],
@@ -46,7 +47,13 @@ export class TeamDetailsComponent implements OnInit {
         this.teamForm.controls.teamName.setValue(this.team.teamName);
         this.teamForm.controls.dateEstd.setValue(this.team.dateEstd);
         this.teamForm.controls.teamLead.setValue(this.team.teamLead);
+        this.teamMembersTeamForm = team.teamMembers;
+        console.log(this.teamForm.value);
       });
+  }
+
+  byId(teamLead: User, user: User): boolean {
+    return teamLead.id === user.id;
   }
 
   addMember(): void {
@@ -58,7 +65,7 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   findMember(user: User): boolean {
-    for (const eachUser of this.team.teamMembers) {
+    for (const eachUser of this.teamMembersTeamForm) {
       if (user.id === eachUser.id) {
         return true;
       }
@@ -67,22 +74,56 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   removeMember(id: number): void {
-    for (const eachUser of this.team.teamMembers) {
+    for (const eachUser of this.teamMembersTeamForm) {
       if (id === eachUser.id) {
-        const indexToDelete = this.team.teamMembers.indexOf(eachUser);
-        this.team.teamMembers.splice(indexToDelete, 1);
+        const indexToDelete = this.teamMembersTeamForm.indexOf(eachUser);
+        this.teamMembersTeamForm.splice(indexToDelete, 1);
         break;
       }
     }
   }
 
-  addTeamToUser(teamName: string, user: User, teamLead: boolean): void {
+  addTeamToUser(teamName: string, user: User, isForTeamLead: boolean): void {
     const teamForm = this.teamForm.value;
     const unupdatedTeamLead = this.team.teamLead;
-    if (this.team.teamLead.id !== teamForm.teamLead.id) {
-      const teamNameIndex = unupdatedTeamLead.leadOnTeams.indexOf(teamName);
-      console.log(unupdatedTeamLead.leadOnTeams);
-      console.log(teamNameIndex);
+    if (isForTeamLead) {
+      const previousTeamNameIndex = this.team.teamLead.leadOnTeams.indexOf(this.team.teamName);
+      unupdatedTeamLead.leadOnTeams.splice(previousTeamNameIndex, 1);
+      if (this.team.teamLead.id !== teamForm.teamLead.id) {
+        teamForm.teamLead.leadOnTeams.push(teamName);
+        this.team = teamForm;
+        this.team.teamMembers = this.teamMembersTeamForm;
+        console.log(teamForm.teamLead);
+        console.log(this.team, 'this team');
+      } else {
+        unupdatedTeamLead.leadOnTeams.push(teamName);
+        this.team = teamForm;
+        console.log(teamForm.teamLead);
+        console.log(this.team, 'team lead');
+      }
+    } else {
+      for (const eachMember of this.team.teamMembers) {
+        let isUserRemoved = true;
+        for (const member of this.teamMembersTeamForm) {
+          const previousTeamNameIndex = member.memberOnTeams.indexOf(this.team.teamName);
+          if (member.id === eachMember.id) {
+            isUserRemoved = false;
+            const indexOfUser = this.team.teamMembers.indexOf(eachMember);
+            this.team.teamMembers.splice(indexOfUser, 1);
+          }
+          if (previousTeamNameIndex >= 0) {
+            member.memberOnTeams.splice(previousTeamNameIndex, 1);
+          }
+          console.log(member.memberOnTeams);
+          member.memberOnTeams.push(teamForm.teamName);
+        }
+        if (isUserRemoved) {
+          const teamToDeleteIndex = eachMember.memberOnTeams.indexOf(this.team.teamName);
+          eachMember.memberOnTeams.splice(teamToDeleteIndex, 1);
+        }
+      }
+      console.log(teamForm);
+      console.log(this.teamMembersTeamForm, 'team memvers form');
     }
     // if (teamLead) {
     //   if ( !(teamName in user.leadOnTeams)) {
@@ -93,7 +134,7 @@ export class TeamDetailsComponent implements OnInit {
 
   updateTeam(): void {
     let validForm = true;
-    if (this.team.teamMembers.length === 0) {
+    if (this.teamMembersTeamForm.length === 0) {
       validForm = false;
       this.errorMessage = 'There has to be atleast one team member';
     }
@@ -117,6 +158,8 @@ export class TeamDetailsComponent implements OnInit {
               this.errorMessage = 'Team Name already exists';
             }
           });
+      } else {
+        this.addTeamToUser(teamForm.teamName, this.team.teamLead, true);
       }
     }
   }

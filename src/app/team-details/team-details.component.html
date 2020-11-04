@@ -12,7 +12,7 @@
   <label>
     Team Name :
     <br/>
-    <input type="text" formControlName="teamName"  placeholder="team name">
+    <input type="text" formControlName="teamName" placeholder="team name">
   </label>
   <br/>
   <label>
@@ -24,22 +24,24 @@
   <label>
     Team Lead :
     <br/>
-    <select required formControlName="teamLead">
-      <option *ngFor="let user of users" [value]="user" [selected]="user.id===teamForm.value.teamLead.id">{{user.firstName}} {{user.lastName}}</option>
+    <select required formControlName="teamLead" [compareWith]="byId">
+      <option *ngFor="let user of users" [ngValue]="user"
+              >{{user.firstName}} {{user.lastName}}</option>
     </select>
   </label>
   <br/>
   <label>
     Team Members :
     <select formControlName="addTeamMember">
-      <option  *ngFor="let user of users" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
+      <option *ngFor="let user of users" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
     </select>
     <button type="button" class="addButton" (click)="addMember()">
       ADD TO TEAM
     </button>
   </label>
   <div *ngFor="let member of team.teamMembers" class="teamMembers">
-    <span class="memberDescription">{{member.firstName | titlecase}} {{member.lastName | titlecase}}; ID: {{member.id}}</span> <span class="removeButton" (click)="removeMember(member.id)">X</span>
+    <span class="memberDescription">{{member.firstName | titlecase}} {{member.lastName | titlecase}}
+      ; ID: {{member.id}}</span> <span class="removeButton" (click)="removeMember(member.id)">X</span>
   </div>
   <br/>
   <button class="updateButton" (click)="updateTeam()">Update</button>
