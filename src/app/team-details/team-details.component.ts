@@ -126,7 +126,9 @@ export class TeamDetailsComponent implements OnInit {
       delete(teamForm.teamLead.memberOnTeams);
       this.userService.updateUser(teamForm.teamLead)
         .subscribe();
+      const tempId = this.team.id;
       this.team = teamForm;
+      this.team.id = tempId;
       this.team.teamMembers = this.teamMembersTeamForm;
       console.log(this.team, 'addTeamToLead()');
     } else {
@@ -134,7 +136,9 @@ export class TeamDetailsComponent implements OnInit {
       delete(unupdatedTeamLead.memberOnTeams);
       this.userService.updateUser(unupdatedTeamLead)
         .subscribe();
+      const tempId = this.team.id;
       this.team = teamForm;
+      this.team.id = tempId;
       this.team.teamMembers = this.teamMembersTeamForm;
       console.log(this.team, 'addTeamToLead()');
     }
@@ -157,10 +161,11 @@ export class TeamDetailsComponent implements OnInit {
         this.teamService.getTeamByName(teamForm.teamName)
           .subscribe(team => {
             if (team.length === 0) {
-              // this.teamService.updateTeam(this.team)
-              //   .subscribe();
               this.addTeamToMembers(teamForm.teamName, this.team.teamName);
               this.addTeamToLead(teamForm.teamName);
+              console.log(this.team);
+              this.teamService.updateTeam(this.team)
+                .subscribe();
               // console.log(this.team, 'update!');
             } else {
               this.errorMessage = 'Team Name already exists';
