@@ -39,7 +39,7 @@
       ADD TO TEAM
     </button>
   </label>
-  <div *ngFor="let member of team.teamMembers" class="teamMembers">
+  <div *ngFor="let member of teamMembersTeamForm" class="teamMembers">
     <span class="memberDescription">{{member.firstName | titlecase}} {{member.lastName | titlecase}}
       ; ID: {{member.id}}</span> <span class="removeButton" (click)="removeMember(member.id)">X</span>
   </div>

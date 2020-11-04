@@ -48,7 +48,6 @@ export class TeamDetailsComponent implements OnInit {
         this.teamForm.controls.dateEstd.setValue(this.team.dateEstd);
         this.teamForm.controls.teamLead.setValue(this.team.teamLead);
         this.teamMembersTeamForm = team.teamMembers;
-        console.log(this.teamForm.value);
       });
   }
 
@@ -60,8 +59,9 @@ export class TeamDetailsComponent implements OnInit {
     const userToBeAdded = this.teamForm.value.addTeamMember;
     const isFound = this.findMember(userToBeAdded);
     if (!isFound) {
-      this.team.teamMembers.push(userToBeAdded);
+      this.teamMembersTeamForm.push(userToBeAdded);
     }
+    console.log(this.teamMembersTeamForm, 'addMember()');
   }
 
   findMember(user: User): boolean {
@@ -78,58 +78,56 @@ export class TeamDetailsComponent implements OnInit {
       if (id === eachUser.id) {
         const indexToDelete = this.teamMembersTeamForm.indexOf(eachUser);
         this.teamMembersTeamForm.splice(indexToDelete, 1);
+        console.log(this.teamMembersTeamForm, 'removeMember()');
         break;
       }
     }
   }
 
-  addTeamToUser(teamName: string, user: User, isForTeamLead: boolean): void {
+  addTeamToMembers(teamName: string): void {
+    console.log(this.teamMembersTeamForm, 'addTeamToMembers()');
+    for (const eachPreviousMember of this.team.teamMembers) {
+      let isRemovedFromTeam = true;
+      for (const eachNewMember of this.teamMembersTeamForm) {
+        // TODO: change name of teamMembersTeamForm to updatedTeamMembers; also unupdated team lead to previousTeamLead
+        const previousTeamNameIndex = eachNewMember.memberOnTeams.indexOf(teamName);
+        //  delete the previous teamName from the array of team names for user
+        if (eachPreviousMember.id === eachNewMember.id) {
+          isRemovedFromTeam = false;
+          const indexOfNewMember = this.team.teamMembers.indexOf(eachPreviousMember);
+          //  since this member is still on the team remove it from list of removed team members;
+          this.team.teamMembers.splice(indexOfNewMember, 1);
+        }
+        if (previousTeamNameIndex >= 0) {
+          //  if member was already part  of the team from before
+          eachNewMember.memberOnTeams.splice(previousTeamNameIndex, 1);
+        }
+        eachNewMember.memberOnTeams.push(teamName);
+        console.log(this.teamMembersTeamForm, 'addTeamToMembers()');
+      }
+    }
+  }
+
+  addTeamToLead(teamName: string): void {
     const teamForm = this.teamForm.value;
     const unupdatedTeamLead = this.team.teamLead;
-    if (isForTeamLead) {
-      const previousTeamNameIndex = this.team.teamLead.leadOnTeams.indexOf(this.team.teamName);
-      unupdatedTeamLead.leadOnTeams.splice(previousTeamNameIndex, 1);
-      if (this.team.teamLead.id !== teamForm.teamLead.id) {
-        teamForm.teamLead.leadOnTeams.push(teamName);
-        this.team = teamForm;
-        this.team.teamMembers = this.teamMembersTeamForm;
-        console.log(teamForm.teamLead);
-        console.log(this.team, 'this team');
-      } else {
-        unupdatedTeamLead.leadOnTeams.push(teamName);
-        this.team = teamForm;
-        console.log(teamForm.teamLead);
-        console.log(this.team, 'team lead');
-      }
+    const previousTeamNameIndex = this.team.teamLead.leadOnTeams.indexOf(this.team.teamName);
+    unupdatedTeamLead.leadOnTeams.splice(previousTeamNameIndex, 1);
+    if (this.team.teamLead.id !== teamForm.teamLead.id) {
+      teamForm.teamLead.leadOnTeams.push(teamName);
+      // put request here
+      const temp = this.team.teamMembers;
+      this.team = teamForm;
+      this.team.teamMembers = temp;
+      console.log(this.team, 'addTeamToLead()');
     } else {
-      for (const eachMember of this.team.teamMembers) {
-        let isUserRemoved = true;
-        for (const member of this.teamMembersTeamForm) {
-          const previousTeamNameIndex = member.memberOnTeams.indexOf(this.team.teamName);
-          if (member.id === eachMember.id) {
-            isUserRemoved = false;
-            const indexOfUser = this.team.teamMembers.indexOf(eachMember);
-            this.team.teamMembers.splice(indexOfUser, 1);
-          }
-          if (previousTeamNameIndex >= 0) {
-            member.memberOnTeams.splice(previousTeamNameIndex, 1);
-          }
-          console.log(member.memberOnTeams);
-          member.memberOnTeams.push(teamForm.teamName);
-        }
-        if (isUserRemoved) {
-          const teamToDeleteIndex = eachMember.memberOnTeams.indexOf(this.team.teamName);
-          eachMember.memberOnTeams.splice(teamToDeleteIndex, 1);
-        }
-      }
-      console.log(teamForm);
-      console.log(this.teamMembersTeamForm, 'team memvers form');
+      unupdatedTeamLead.leadOnTeams.push(teamName);
+      // put request
+      const temp = this.team.teamMembers;
+      this.team = teamForm;
+      this.team.teamMembers = temp;
+      console.log(this.team, 'addTeamToLead()');
     }
-    // if (teamLead) {
-    //   if ( !(teamName in user.leadOnTeams)) {
-    //   }
-    // }
-    // console.log('g');
   }
 
   updateTeam(): void {
@@ -145,21 +143,23 @@ export class TeamDetailsComponent implements OnInit {
     if (validForm) {
       const teamForm = this.teamForm.value;
       teamForm.teamName = teamForm.teamName.trim().toLowerCase();
-      console.log('valid Form');
       if (teamForm.teamName !== this.team.teamName) {
         this.teamService.getTeamByName(teamForm.teamName)
           .subscribe(team => {
             if (team.length === 0) {
               // this.teamService.updateTeam(this.team)
               //   .subscribe();
-              this.addTeamToUser(teamForm.teamName, this.team.teamLead, true);
+              this.addTeamToLead(teamForm.teamName);
+              this.addTeamToMembers(teamForm.teamName);
               // console.log(this.team, 'update!');
             } else {
               this.errorMessage = 'Team Name already exists';
             }
           });
       } else {
-        this.addTeamToUser(teamForm.teamName, this.team.teamLead, true);
+        this.addTeamToLead(teamForm.teamName);
+        this.addTeamToMembers(teamForm.teamName);
+        // this.addTeamToUser(teamForm.teamName, this.team.teamLead, false);
       }
     }
   }
