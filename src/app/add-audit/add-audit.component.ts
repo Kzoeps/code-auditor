@@ -22,7 +22,7 @@ export class AddAuditComponent implements OnInit {
   auditForm = this.fb.group({
     auditee: ['', [Validators.required]],
     auditorToAdd: [''],
-    startDate: ['', [Validators.required]],
+    auditStartDate: ['', [Validators.required]],
     status: ['on-going']
   });
   audit: Audit;
@@ -71,7 +71,9 @@ export class AddAuditComponent implements OnInit {
     }
     if (validForm) {
       this.errorMessage = '';
+      delete(this.auditForm.value.auditorToAdd);
       this.audit = this.auditForm.value;
+      this.audit.auditor = this.auditors;
       this.auditService.createAudit(this.audit)
         .subscribe(audit => {
           console.log(audit);

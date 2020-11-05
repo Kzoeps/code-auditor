@@ -3,9 +3,9 @@ import {Memo} from './memo';
 
 export interface Audit {
   id: number;
-  Auditee: Team;
-  Auditor: Team[];
-  dateOfAudit: string;
+  auditee: Team;
+  auditor: Team[];
+  auditStartDate: string;
   status: string;
   memo: Memo;
 }

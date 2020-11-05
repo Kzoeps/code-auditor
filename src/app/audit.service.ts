@@ -24,6 +24,13 @@ export class AuditService {
       );
   }
 
+  getAudit(id: number): Observable<Audit> {
+    const url = `${this.auditUrl}/${id}`;
+    return this.http.get<Audit>(url)
+      .pipe(
+        catchError(this.handleError<Audit>(`getAudit; id: ${id}`))
+      );
+  }
   createAudit(audit: Audit): Observable<Audit> {
     return this.http.post<Audit>(this.auditUrl, audit, this.httpOptions)
       .pipe(

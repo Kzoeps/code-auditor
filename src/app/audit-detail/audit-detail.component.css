@@ -1,12 +1,6 @@
-p {
-  margin-bottom: 5px !important;
+.errorMessage{
+  color: red;
 }
-
-.createButton {
-  margin-top: 25px;
-}
-
-
 
 .addTeam {
   margin-left: 15px;
@@ -49,4 +43,16 @@ p {
   margin-right: 5px;
   margin-top: 5px !important;
   margin-left: 5px !important;
+}
+
+.memo {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+}
+
+.addMemo{
+  height: 20px;
+  width: auto;
+  margin-top: 15px;
 }

@@ -11,6 +11,7 @@ import {AddTeamComponent} from './add-team/add-team.component';
 import {TeamDetailsComponent} from './team-details/team-details.component';
 import {AuditComponent} from './audit/audit.component';
 import {AddAuditComponent} from './add-audit/add-audit.component';
+import {AuditDetailComponent} from './audit-detail/audit-detail.component';
 
 const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'add-team', component: AddTeamComponent},
   {path: 'team-detail/:id', component: TeamDetailsComponent},
   {path: 'audit', component: AuditComponent},
-  {path: 'add-audit', component: AddAuditComponent}
+  {path: 'add-audit', component: AddAuditComponent},
+  {path: 'audit-detail/:id', component: AuditDetailComponent}
 ];
 
 @NgModule({

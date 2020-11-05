@@ -1,0 +1,75 @@
+<app-nav></app-nav>
+<form *ngIf="audit" [formGroup]="auditForm">
+  <h3>Auditee: {{audit.auditee.teamName}} Details</h3>
+  <h4 *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</h4>
+  <label>
+    Audit ID :
+    <br/>
+    {{audit.id}}
+  </label>
+  <br/>
+  <label>
+    Auditee :
+    <br/>
+    <select required formControlName="auditee" [compareWith]="byId">
+      <option *ngFor="let team of teams" [ngValue]="team">
+        {{team.teamName}}
+      </option>
+    </select>
+  </label>
+  <br/>
+  <label>
+    <div class="auditors">
+      <p>Auditor : *</p>
+      <select required formControlName="auditorToAdd" class="auditorTeams inputs">
+        <option *ngFor="let team of teams" [ngValue]="team">
+          {{team.teamName | titlecase}}
+        </option>
+      </select>
+      <button (click)="addAuditor()" class="addTeam">Add Team</button>
+    </div>
+    <div *ngIf="auditors" class="listOfAuditors">
+      <div *ngFor="let auditor of auditors" class="auditorBox">
+        <p class="auditorTeamDescription">{{auditor.teamName}}; ID:{{auditor.id}}</p>
+        <div class="removeAuditor" (click)="removeAuditor(auditor)">X</div>
+      </div>
+    </div>
+  </label>
+  <br/>
+  <label>
+    Audit Start Date :
+    <br/>
+    <input required formControlName="auditStartDate" type="date"/>
+  </label>
+  <br/>
+  <label>
+    Status :
+    <br/>
+    <select required formControlName="status" [compareWith]="byStatus">
+      <option *ngFor="let statusOption of status" [ngValue]="statusOption">
+        {{statusOption}}
+      </option>
+    </select>
+  </label>
+  <div formGroupName="memo">
+    <h4>Memo</h4>
+    <div class="memo">
+      <label>
+        Description :
+        <br/>
+        <textarea required formControlName="description"></textarea>
+      </label>
+      <label>
+        Assigned To :
+        <br/>
+        <select required formControlName="assignedTo">
+          <option *ngFor="let user of auditForm.value.auditee.teamMembers"
+                  [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
+        </select>
+      </label>
+      <button class="addMemo" (click)="addMemo()">
+        Add memo
+      </button>
+    </div>
+  </div>
+</form>
