@@ -1,0 +1,4 @@
+<app-nav></app-nav>
+<ul *ngIf="auditTeams">
+  <li *ngFor="let audit of auditTeams" class="auditees">Auditee Team Name : <a href="/audit-detail/{{audit.id}}">{{audit.auditee.teamName | titlecase}}</a></li>
+</ul>

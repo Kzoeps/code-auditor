@@ -4,6 +4,7 @@ import {UserService} from '../user.service';
 import {User} from '../user';
 
 // TODO: Validations to make sure min length and also no blanks
+// TODO: Team Lead edition.
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',

@@ -1,0 +1,40 @@
+<app-nav></app-nav>
+<form [formGroup]="auditForm">
+  <h4 *ngIf="errorMessage">{{errorMessage}}</h4>
+  <label class="labels">
+    <p>Auditee : *</p>
+    <select required formControlName="auditee" class="inputs">
+      <option *ngFor="let team of teams" [ngValue]="team">{{team.teamName | titlecase}}</option>
+    </select>
+  </label>
+  <br/>
+  <label class="labels">
+    <div class="auditors">
+      <p>Auditor : *</p>
+      <select required formControlName="auditorToAdd" class="auditorTeams inputs">
+        <option *ngFor="let team of teams" [ngValue]="team">
+          {{team.teamName | titlecase}}
+        </option>
+      </select>
+      <button (click)="addAuditor()" class="addTeam">Add Team</button>
+    </div>
+    <div *ngIf="auditors" class="listOfAuditors">
+      <div *ngFor="let auditor of auditors" class="auditorBox">
+        <p class="auditorTeamDescription">{{auditor.teamName}}; ID:{{auditor.id}}</p>
+        <div class="removeAuditor" (click)="removeAuditor(auditor)">X</div>
+      </div>
+    </div>
+  </label>
+  <br/>
+  <label>
+    <p>Date Of Audit Start : *</p>
+    <input required formControlName="auditStartDate" type="date" placeholder="audit start date" class="inputs"/>
+  </label>
+  <br/>
+  <label>
+    <p>Status : *</p>
+    <span class="inputs">{{auditForm.value.status}}</span>
+  </label>
+  <br/>
+  <button type="submit" class='createButton' (click)="createAudit()">Create Audit</button>
+</form>

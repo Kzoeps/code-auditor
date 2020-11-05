@@ -1,3 +1,4 @@
+<!-- TODO: add memberOnTeams and teamLead-->
 <app-nav></app-nav>
 <div *ngIf="user">
   <h3>{{user.firstName}} {{user.lastName}} Details</h3>
@@ -27,6 +28,12 @@
       <option *ngFor="let role of roles" [value]="role" [selected]="user.role === role">{{role}}</option>
     </select>
   </label>
+  <br/>
+  <br/>
+  <label>
+    <span class="" *ngFor="let team of user.leadOnTeams">Teams leading/led : {{team}} </span>
+  </label>
+  <br/>
   <br/>
   <button (click)="updateUser()">Update</button>
 </div>

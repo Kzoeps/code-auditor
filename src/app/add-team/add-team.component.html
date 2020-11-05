@@ -1,4 +1,5 @@
 <app-nav></app-nav>
+<h4 *ngIf="errorMessage">{{errorMessage}}</h4>
 <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
   <label>
     Team Name:
@@ -13,16 +14,30 @@
   </label>
   <br/>
   <label>
-    Team Lead:
+    Team Lead :
     <br/>
-    <input type="text" formControlName="teamLead" required/>
+    <select required formControlName="teamLead">
+      <option *ngFor="let user of users" [value]="user.id">{{user.firstName}} {{user.lastName}}</option>
+    </select>
   </label>
   <br/>
   <label>
     Team Members:
     <br/>
-    <input type="text" formControlName="teamMembers" required/>
+    <select required formControlName="teamMembers">
+      <option *ngFor="let user of users" [value]="user.id">
+        <span>{{user.firstName}} {{user.lastName}}</span>
+      </option>
+    </select>
+    <button type="button" class="addButton" (click)="addMember()">
+      Add To Team
+    </button>
   </label>
+  <div *ngFor="let member of teamMembers" class="teamMembers">
+    <div class="memberDescription">{{member.firstName}} {{member.lastName}}; id: {{member.id}}</div>
+    <div class="removeButton" (click)="removeMember(member.id)">X</div>
+  </div>
+  <br/>
   <br/>
   <br/>
   <button type="submit" [disabled]="!teamForm.valid">

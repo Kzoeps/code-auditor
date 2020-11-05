@@ -1,0 +1,52 @@
+p {
+  margin-bottom: 5px !important;
+}
+
+.createButton {
+  margin-top: 25px;
+}
+
+
+
+.addTeam {
+  margin-left: 15px;
+  margin-top: 16px;
+  height: 20px;
+}
+
+.auditorTeams {
+  margin-left: 15px;
+  height: 20px;
+  margin-top: 16px;
+}
+
+.auditors {
+  display: flex;
+}
+
+.auditorBox {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  margin-right: 10px;
+  height: auto;
+  border: solid 1px black;
+}
+
+.listOfAuditors {
+  display: flex;
+}
+
+.removeAuditor {
+  font-size: 0.8rem;
+  color: red;
+  cursor: pointer;
+  width: 0.8rem;
+  height: auto;
+}
+
+.auditorTeamDescription{
+  margin-right: 5px;
+  margin-top: 5px !important;
+  margin-left: 5px !important;
+}

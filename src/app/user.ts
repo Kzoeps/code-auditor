@@ -1,3 +1,5 @@
+import {Team} from './team';
+
 export interface User {
   id: number;
   firstName: string;
@@ -6,4 +8,6 @@ export interface User {
   password: string;
   confirmPassword: string;
   role: string;
+  leadOnTeams: string[];
+  memberOnTeams: string[];
 }

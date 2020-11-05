@@ -15,6 +15,10 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { TeamComponent } from './team/team.component';
 import { AddTeamComponent } from './add-team/add-team.component';
 import { TeamDetailsComponent } from './team-details/team-details.component';
+import { AuditComponent } from './audit/audit.component';
+import { AddAuditComponent } from './add-audit/add-audit.component';
+import { AuditDetailComponent } from './audit-detail/audit-detail.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,15 +32,20 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
     AddUserComponent,
     TeamComponent,
     AddTeamComponent,
-    TeamDetailsComponent
+    TeamDetailsComponent,
+    AuditComponent,
+    AddAuditComponent,
+    AuditDetailComponent,
   ],
     imports: [
+        CommonModule,
         BrowserModule,
         ReactiveFormsModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
     ],
+  exports: [NavComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

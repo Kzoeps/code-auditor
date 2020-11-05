@@ -1,0 +1,21 @@
+.addButton {
+  margin-left: 15px;
+}
+.teamMembers {
+  display: flex;
+  margin: 10px 5px 0 5px;
+  border: solid 1px black;
+  width: 120px;
+  justify-content: space-between;
+}
+.removeButton {
+  margin-left: 5px;
+  font-size: 0.8rem;
+  color: red;
+}
+.memberDescription {
+  margin: 5px;
+}
+.updateButton {
+  margin-top: 20px;
+}

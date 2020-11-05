@@ -1,73 +1,308 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstName": "Thinley",
-      "lastName": "Dhendup",
-      "email": "kzoepa@gmail.com",
-      "password": "karma123",
-      "role": "Quality Assurance"
-    },
-    {
-      "id": 2,
-      "firstName": "Yeshey",
-      "lastName": "Lhamo",
-      "email": "yl@gmail.com",
-      "password": "karma123",
-      "role": "Project Manager"
-    },
-    {
-      "firstName": "jigme",
-      "lastName": "nobs",
-      "email": "jnobs@gmail.com",
-      "password": "kzoepa123",
-      "confirmPassword": "kzoepa123",
-      "role": "Backend",
-      "id": 3
-    },
-    {
       "firstName": "karma",
-      "lastName": "karma",
-      "email": "k@gmail.com",
-      "password": "kop123",
-      "confirmPassword": "kop123",
-      "role": "Backend",
-      "id": 4
+      "lastName": "yoezer",
+      "email": "kzoepa@gmail.com",
+      "password": "kopa123",
+      "confirmPassword": "kopa123",
+      "role": "Frontend",
+      "leadOnTeams": [
+        "aviato"
+      ],
+      "memberOnTeams": [
+        "thousands"
+      ],
+      "id": 1
     },
     {
-      "firstName": "25th",
-      "lastName": "Night",
-      "email": "yoru@gmail.com",
-      "password": "togcomeback",
-      "confirmPassword": "togcomeback",
-      "role": "Project Manager",
-      "id": 5
+      "firstName": "jigme ",
+      "lastName": "tashi",
+      "email": "jt@gmail.com",
+      "password": "hopscotch",
+      "confirmPassword": "hopscotch",
+      "role": "Quality Assurance",
+      "leadOnTeams": [
+        "thousands"
+      ],
+      "memberOnTeams": [],
+      "id": 2
     }
   ],
   "team": [
     {
-      "id": 1,
-      "teamName": "codingers",
-      "dateEstd": "12/12/20",
-      "teamLead": "Karma Yoez",
-      "teamMembers": "THis guy and that guy"
+      "teamName": "aviato",
+      "dateEstd": "2020-10-10",
+      "teamLead": {
+        "firstName": "karma",
+        "lastName": "yoezer",
+        "email": "kzoepa@gmail.com",
+        "password": "kopa123",
+        "confirmPassword": "kopa123",
+        "role": "Frontend",
+        "leadOnTeams": [
+          "aviato"
+        ],
+        "memberOnTeams": [
+          "aviato"
+        ],
+        "id": 1
+      },
+      "teamMembers": [
+        {
+          "firstName": "karma",
+          "lastName": "yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "kopa123",
+          "confirmPassword": "kopa123",
+          "role": "Frontend",
+          "leadOnTeams": [
+            "aviato"
+          ],
+          "memberOnTeams": [
+            "aviato"
+          ],
+          "id": 1
+        }
+      ],
+      "id": 1
     },
     {
-      "teamName": "Hexagons",
-      "dateEstd": "2020-10-15",
-      "teamLead": "Karma Yoezer",
-      "teamMembers": "Thinley choden",
-      "id": 2
-    },
-    {
-      "teamName": "The Coop",
-      "dateEstd": "2020-10-15",
-      "teamLead": "Thinley Dhendup",
-      "teamMembers": "Karma Yoez",
-      "id": 3
+      "teamName": "thousands",
+      "dateEstd": "2020-10-10",
+      "teamLead": {
+        "firstName": "jigme ",
+        "lastName": "tashi",
+        "email": "jt@gmail.com",
+        "password": "hopscotch",
+        "confirmPassword": "hopscotch",
+        "role": "Quality Assurance",
+        "leadOnTeams": [
+          "thousands"
+        ],
+        "id": 2
+      },
+      "teamMembers": [
+        {
+          "firstName": "karma",
+          "lastName": "yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "kopa123",
+          "confirmPassword": "kopa123",
+          "role": "Frontend",
+          "leadOnTeams": [
+            "aviato"
+          ],
+          "memberOnTeams": [
+            "thousands"
+          ],
+          "id": 1
+        }
+      ],
+      "id": 2,
+      "addTeamMember": {
+        "firstName": "karma",
+        "lastName": "yoezer",
+        "email": "kzoepa@gmail.com",
+        "password": "kopa123",
+        "confirmPassword": "kopa123",
+        "role": "Frontend",
+        "leadOnTeams": [
+          "aviato"
+        ],
+        "memberOnTeams": [
+          "thousands"
+        ],
+        "id": 1
+      }
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "audit": [
+    {
+      "auditee": {
+        "teamName": "aviato",
+        "dateEstd": "2020-10-10",
+        "teamLead": {
+          "firstName": "karma",
+          "lastName": "yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "kopa123",
+          "confirmPassword": "kopa123",
+          "role": "Frontend",
+          "leadOnTeams": [
+            "aviato"
+          ],
+          "memberOnTeams": [
+            "aviato"
+          ],
+          "id": 1
+        },
+        "teamMembers": [
+          {
+            "firstName": "karma",
+            "lastName": "yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "kopa123",
+            "confirmPassword": "kopa123",
+            "role": "Frontend",
+            "leadOnTeams": [
+              "aviato"
+            ],
+            "memberOnTeams": [
+              "aviato"
+            ],
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      "auditStartDate": "2020-11-11",
+      "status": "on-going",
+      "auditor": [
+        {
+          "teamName": "thousands",
+          "dateEstd": "2020-10-10",
+          "teamLead": {
+            "firstName": "jigme ",
+            "lastName": "tashi",
+            "email": "jt@gmail.com",
+            "password": "hopscotch",
+            "confirmPassword": "hopscotch",
+            "role": "Quality Assurance",
+            "leadOnTeams": [
+              "thousands"
+            ],
+            "id": 2
+          },
+          "teamMembers": [
+            {
+              "firstName": "karma",
+              "lastName": "yoezer",
+              "email": "kzoepa@gmail.com",
+              "password": "kopa123",
+              "confirmPassword": "kopa123",
+              "role": "Frontend",
+              "leadOnTeams": [
+                "aviato"
+              ],
+              "memberOnTeams": [
+                "thousands"
+              ],
+              "id": 1
+            }
+          ],
+          "id": 2,
+          "addTeamMember": {
+            "firstName": "karma",
+            "lastName": "yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "kopa123",
+            "confirmPassword": "kopa123",
+            "role": "Frontend",
+            "leadOnTeams": [
+              "aviato"
+            ],
+            "memberOnTeams": [
+              "thousands"
+            ],
+            "id": 1
+          }
+        }
+      ],
+      "id": 1
+    },
+    {
+      "auditee": {
+        "teamName": "thousands",
+        "dateEstd": "2020-10-10",
+        "teamLead": {
+          "firstName": "jigme ",
+          "lastName": "tashi",
+          "email": "jt@gmail.com",
+          "password": "hopscotch",
+          "confirmPassword": "hopscotch",
+          "role": "Quality Assurance",
+          "leadOnTeams": [
+            "thousands"
+          ],
+          "id": 2
+        },
+        "teamMembers": [
+          {
+            "firstName": "karma",
+            "lastName": "yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "kopa123",
+            "confirmPassword": "kopa123",
+            "role": "Frontend",
+            "leadOnTeams": [
+              "aviato"
+            ],
+            "memberOnTeams": [
+              "thousands"
+            ],
+            "id": 1
+          }
+        ],
+        "id": 2,
+        "addTeamMember": {
+          "firstName": "karma",
+          "lastName": "yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "kopa123",
+          "confirmPassword": "kopa123",
+          "role": "Frontend",
+          "leadOnTeams": [
+            "aviato"
+          ],
+          "memberOnTeams": [
+            "thousands"
+          ],
+          "id": 1
+        }
+      },
+      "auditStartDate": "2020-11-08",
+      "status": "on-going",
+      "auditor": [
+        {
+          "teamName": "aviato",
+          "dateEstd": "2020-10-10",
+          "teamLead": {
+            "firstName": "karma",
+            "lastName": "yoezer",
+            "email": "kzoepa@gmail.com",
+            "password": "kopa123",
+            "confirmPassword": "kopa123",
+            "role": "Frontend",
+            "leadOnTeams": [
+              "aviato"
+            ],
+            "memberOnTeams": [
+              "aviato"
+            ],
+            "id": 1
+          },
+          "teamMembers": [
+            {
+              "firstName": "karma",
+              "lastName": "yoezer",
+              "email": "kzoepa@gmail.com",
+              "password": "kopa123",
+              "confirmPassword": "kopa123",
+              "role": "Frontend",
+              "leadOnTeams": [
+                "aviato"
+              ],
+              "memberOnTeams": [
+                "aviato"
+              ],
+              "id": 1
+            }
+          ],
+          "id": 1
+        }
+      ],
+      "id": 2
+    }
+  ]
 }
