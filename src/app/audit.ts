@@ -1,4 +1,5 @@
-import {Team} from './app/team';
+import {Team} from './team';
+import {Memo} from './memo';
 
 export interface Audit {
   id: number;
@@ -6,4 +7,5 @@ export interface Audit {
   Auditor: Team[];
   dateOfAudit: string;
   status: string;
+  memo: Memo;
 }
