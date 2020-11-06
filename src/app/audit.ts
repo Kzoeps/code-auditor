@@ -7,5 +7,7 @@ export interface Audit {
   auditor: Team[];
   auditStartDate: string;
   status: string;
-  memo: Memo;
+  memos: Memo[];
+  resolved: Memo[];
+  tbd: Memo[];
 }

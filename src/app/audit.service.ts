@@ -31,10 +31,19 @@ export class AuditService {
         catchError(this.handleError<Audit>(`getAudit; id: ${id}`))
       );
   }
+
   createAudit(audit: Audit): Observable<Audit> {
     return this.http.post<Audit>(this.auditUrl, audit, this.httpOptions)
       .pipe(
         catchError(this.handleError<Audit>(`createAudit audit=${audit}`))
+      );
+  }
+
+  updateAudit(audit: Audit): Observable<Audit> {
+    const url = `${this.auditUrl}/${audit.id}`;
+    return this.http.patch<Audit>(url, audit, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Audit>(`updateAudit auditID=${audit.id}`))
       );
   }
 
