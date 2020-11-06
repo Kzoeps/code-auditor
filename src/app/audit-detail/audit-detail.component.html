@@ -103,7 +103,16 @@
     <h4>Resolved</h4>
     <div class="memosContainer" *ngIf="resolved">
       <div class="memoBox" *ngFor="let memo of resolved">
-        <p>{{memo.description}}</p>
+        <div class="moveSection">
+          <p>{{memo.description}}</p>
+          <select class="sectionBox" formControlName="resolvedMoveSection"
+                  [(ngModel)]="auditForm.value.resolvedMoveSection">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section}}</option>
+          </select>
+          <button (click)="move(memo, 1)" class="moveButton">
+            move
+          </button>
+        </div>
         <hr/>
         <p class="memoBoxAssignLabel">Assigned to : </p>
         <div *ngFor="let assignee of memo.assignedTo" class="memoBoxAssignee">
@@ -116,7 +125,17 @@
     <h4>To Be Discussed</h4>
     <div class="memosContainer" *ngIf="tbd">
       <div class="memoBox" *ngFor="let memo of tbd">
-        <p>{{memo.description}}</p>
+        <div class="moveSection">
+          <div class="memoDescription">
+            <p>{{memo.description}}</p>
+          </div>
+          <select class="sectionBox" formControlName="tbdMoveSection" [(ngModel)]="auditForm.value.tbdMoveSection">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section}}</option>
+          </select>
+          <button (click)="move(memo, 2)" class="moveButton">
+            move
+          </button>
+        </div>
         <hr/>
         <p class="memoBoxAssignLabel">Assigned to : </p>
         <div *ngFor="let assignee of memo.assignedTo" class="memoBoxAssignee">
