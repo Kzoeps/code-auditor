@@ -1,4 +1,4 @@
-.errorMessage{
+.errorMessage {
   color: red;
 }
 
@@ -39,20 +39,132 @@
   height: auto;
 }
 
-.auditorTeamDescription{
+.auditorTeamDescription {
   margin-right: 5px;
   margin-top: 5px !important;
   margin-left: 5px !important;
 }
 
+.remove {
+  color: red;
+  margin-left: 5px;
+}
+
 .memo {
   display: flex;
-  width: 400px;
+  width: 800px;
   justify-content: space-between;
 }
 
-.addMemo{
+.addMemo {
   height: 20px;
   width: auto;
   margin-top: 15px;
+}
+
+.memosContainer {
+  display: flex;
+}
+
+.memoAssignees {
+  display: flex;
+}
+
+.memoBox {
+  border: solid 1px black;
+  margin-right: 10px;
+}
+
+.memoBox p {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.auditee {
+  margin-bottom: 5px !important;
+}
+
+.lowMarginBot {
+  margin-bottom: 5px !important;
+}
+
+.memoBoxAssignLabel {
+  margin-bottom: 3px !important;
+  margin-top: 0 !important;
+}
+
+.memoBoxAssignee {
+  display: flex;
+  width: 165px;
+  border: solid 1px black;
+  justify-content: space-between;
+  margin: 3px 5px 5px 5px;
+}
+
+.memoBoxAssigneeDescription{
+  margin: 10px 5px 5px 5px;
+}
+.moveSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sectionBox {
+  height: 20px;
+  margin-top: 15px;
+  width: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.moveButton {
+  height: 20px;
+  width: auto;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.editRemove {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.editMemoButton {
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.removeMemo{
+  margin-top: 3px;
+  margin-right: 10px;
+  color: red;
+  cursor: pointer;
+}
+
+.memoDescriptionBox {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.memoUpdateAssignees{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0 5px 5px;
+}
+
+.removeAssigneeBtn {
+  color: red;
+  font-size: 0.8rem;
+  width: 13px;
+  height: 13px;
+  border: solid 1px black;
+  text-align: center;
+  margin: 3px 3px 0 0;
+  cursor: pointer;
+}
+
+.assignToMemoBox{
+  display: flex;
+  justify-content: space-between;
 }

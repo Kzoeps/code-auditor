@@ -1,4 +1,5 @@
 <app-nav></app-nav>
+<!-- TODO: teammemvers no repetition -->
 <form *ngIf="audit" [formGroup]="auditForm">
   <h3>Auditee: {{audit.auditee.teamName}} Details</h3>
   <h4 *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</h4>
@@ -9,42 +10,31 @@
   </label>
   <br/>
   <label>
-    Auditee :
-    <br/>
-    <select required formControlName="auditee" [compareWith]="byId">
-      <option *ngFor="let team of teams" [ngValue]="team">
-        {{team.teamName}}
-      </option>
-    </select>
+    <h4 class="auditee">Auditee : {{audit.auditee.teamName | titlecase}} </h4>
+    Team Lead : {{audit.auditee.teamLead.firstName}} {{audit.auditee.teamLead.lastName}};
+    ID:{{audit.auditee.teamLead.id}};
+    <div class="auditeeBox"
+         *ngFor="let auditeeMember of audit.auditee.teamMembers">{{auditeeMember.firstName}} {{auditeeMember.lastName}};
+      ID:{{auditeeMember.id}}</div>
   </label>
   <br/>
   <label>
+    <h4>Auditor: <span *ngFor="let team of audit.auditor">{{team.teamName | titlecase}},</span></h4>
     <div class="auditors">
-      <p>Auditor : *</p>
-      <select required formControlName="auditorToAdd" class="auditorTeams inputs">
-        <option *ngFor="let team of teams" [ngValue]="team">
-          {{team.teamName | titlecase}}
-        </option>
-      </select>
-      <button (click)="addAuditor()" class="addTeam">Add Team</button>
-    </div>
-    <div *ngIf="auditors" class="listOfAuditors">
-      <div *ngFor="let auditor of auditors" class="auditorBox">
-        <p class="auditorTeamDescription">{{auditor.teamName}}; ID:{{auditor.id}}</p>
-        <div class="removeAuditor" (click)="removeAuditor(auditor)">X</div>
+      <div class="auditorBox" *ngFor="let team of audit.auditor">
+        {{team.teamLead.firstName}} {{team.teamLead.lastName}}; ID:{{team.teamLead.id}}
+      </div>
+      <div class="auditorBox" *ngFor="let team of audit.auditor">
+        <div *ngFor="let member of team.teamMembers">{{member.firstName}} {{member.lastName}}; ID:{{member.id}}</div>
       </div>
     </div>
   </label>
   <br/>
   <label>
-    Audit Start Date :
-    <br/>
-    <input required formControlName="auditStartDate" type="date"/>
+    <h4>Audit Start Date : {{audit.auditStartDate | date}}</h4>
   </label>
-  <br/>
   <label>
-    Status :
-    <br/>
+    <h4 class="lowMarginBot">Status :</h4>
     <select required formControlName="status" [compareWith]="byStatus">
       <option *ngFor="let statusOption of status" [ngValue]="statusOption">
         {{statusOption}}
@@ -53,6 +43,7 @@
   </label>
   <div formGroupName="memo">
     <h4>Memo</h4>
+    <h5 class="errorMessage" *ngIf="memoErrorMessage">{{memoErrorMessage}}</h5>
     <div class="memo">
       <label>
         Description :
@@ -60,16 +51,118 @@
         <textarea required formControlName="description"></textarea>
       </label>
       <label>
-        Assigned To :
+        Assign To :
         <br/>
         <select required formControlName="assignedTo">
-          <option *ngFor="let user of auditForm.value.auditee.teamMembers"
+          <option *ngFor="let user of audit.auditee.teamMembers"
                   [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
+          <option
+            [ngValue]="audit.auditee.teamLead">{{audit.auditee.teamLead.firstName}} {{audit.auditee.teamLead.lastName}}</option>
         </select>
+        <br/>
+        <button (click)="assign()">Assign</button>
+        <div *ngIf="memoAssignees">
+          <div *ngFor="let assignee of memoAssignees" class="memoAssignees">
+            <div>{{assignee.firstName}} {{assignee.lastName}}; ID:{{assignee.id}}</div>
+            <div class="remove" (click)="removeAssignee(assignee)">X</div>
+          </div>
+        </div>
       </label>
       <button class="addMemo" (click)="addMemo()">
         Add memo
       </button>
     </div>
   </div>
+  <div class="memoInMemos">
+    <div class="memosContainer" *ngIf="memos">
+      <div class="memoBox" *ngFor="let memo of memos">
+        <div class="moveSection">
+          <textarea class="memoDescriptionBox" [(ngModel)]="memo.description" [ngModelOptions]="{standalone: true}"
+                    required>{{memo.description}}</textarea>
+          <select class="sectionBox" formControlName="memoMoveSection" [(ngModel)]="auditForm.value.memoMoveSection">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section}}</option>
+          </select>
+          <button (click)="move(memo, 0)" class="moveButton">
+            move
+          </button>
+        </div>
+        <hr/>
+        <div class="assignToMemoBox">
+          <div class="memoBoxAssignLabel">Assign to:</div>
+          <select formControlName="assignToMemoBox" [(ngModel)]="auditForm.value.assignToMemoBox">
+            <option *ngFor="let user of audit.auditee.teamMembers" [ngValue]="user">
+              {{user.firstName}} {{user.lastName}}
+            </option>
+            <option
+              [ngValue]="audit.auditee.teamLead">{{audit.auditee.teamLead.firstName}} {{audit.auditee.teamLead.lastName}}</option>
+          </select>
+          <button (click)="memoAssignUpdate(memo)">
+            Assign
+          </button>
+        </div>
+        <div class="memoUpdateAssignees" *ngIf="memo.assignedTo.length > 0">
+          <div *ngFor="let assignee of memo.assignedTo" class="memoBoxAssignee">
+            <div class="memoBoxAssigneeDescription">
+              {{assignee.firstName}} {{assignee.lastName}}; ID: {{assignee.id}}
+            </div>
+            <div class="removeAssigneeBtn" (click)="removeAssigneeMemo(assignee, memo)">
+              X
+            </div>
+          </div>
+        </div>
+        <div class="editRemove">
+          <button class="removeMemo" (click)="removeMemo(memo, 0)">remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="resolved">
+    <h4>Resolved</h4>
+    <div class="memosContainer" *ngIf="resolved">
+      <div class="memoBox" *ngFor="let memo of resolved">
+        <div class="moveSection">
+          <p>{{memo.description}}</p>
+          <select class="sectionBox" formControlName="resolvedMoveSection"
+                  [(ngModel)]="auditForm.value.resolvedMoveSection">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section}}</option>
+          </select>
+          <button (click)="move(memo, 1)" class="moveButton">
+            move
+          </button>
+        </div>
+        <hr/>
+        <p class="memoBoxAssignLabel">Assigned to : </p>
+        <div *ngFor="let assignee of memo.assignedTo" class="memoBoxAssignee">
+          {{assignee.firstName}} {{assignee.lastName}}; ID:{{assignee.id}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tbd">
+    <h4>To Be Discussed</h4>
+    <div class="memosContainer" *ngIf="tbd">
+      <div class="memoBox" *ngFor="let memo of tbd">
+        <div class="moveSection">
+          <div class="memoDescription">
+            <p>{{memo.description}}</p>
+          </div>
+          <select class="sectionBox" formControlName="tbdMoveSection" [(ngModel)]="auditForm.value.tbdMoveSection">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section}}</option>
+          </select>
+          <button (click)="move(memo, 2)" class="moveButton">
+            move
+          </button>
+        </div>
+        <hr/>
+        <p class="memoBoxAssignLabel">Assigned to : </p>
+        <div *ngFor="let assignee of memo.assignedTo" class="memoBoxAssignee">
+          {{assignee.firstName}} {{assignee.lastName}}; ID:{{assignee.id}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <button (click)="updateAudit()">
+    Update
+  </button>
 </form>
