@@ -210,8 +210,49 @@
         }
       ],
       "memos": [
+        {
+          "description": "new memo",
+          "assignedTo": [
+            {
+              "firstName": "karma",
+              "lastName": "yoezer",
+              "email": "kzoepa@gmail.com",
+              "password": "kopa123",
+              "confirmPassword": "kopa123",
+              "role": "Frontend",
+              "leadOnTeams": [
+                "aviato"
+              ],
+              "memberOnTeams": [
+                "aviato"
+              ],
+              "id": 1
+            }
+          ]
+        }
       ],
-      "resolved": [],
+      "resolved": [
+        {
+          "description": "another memo",
+          "assignedTo": [
+            {
+              "firstName": "karma",
+              "lastName": "yoezer",
+              "email": "kzoepa@gmail.com",
+              "password": "kopa123",
+              "confirmPassword": "kopa123",
+              "role": "Frontend",
+              "leadOnTeams": [
+                "aviato"
+              ],
+              "memberOnTeams": [
+                "aviato"
+              ],
+              "id": 1
+            }
+          ]
+        }
+      ],
       "tbd": [],
       "id": 1
     },
@@ -308,7 +349,7 @@
       ],
       "memos": [
         {
-          "description": "shit wats up",
+          "description": "Kuzuzangppoooo",
           "assignedTo": [
             {
               "firstName": "karma",
@@ -324,12 +365,24 @@
                 "thousands"
               ],
               "id": 1
+            },
+            {
+              "firstName": "jigme ",
+              "lastName": "tashi",
+              "email": "jt@gmail.com",
+              "password": "hopscotch",
+              "confirmPassword": "hopscotch",
+              "role": "Quality Assurance",
+              "leadOnTeams": [
+                "thousands"
+              ],
+              "id": 2
             }
           ]
         }
       ],
       "resolved": [],
-      "tbd":[],
+      "tbd": [],
       "id": 2
     },
     {
@@ -423,8 +476,7 @@
           }
         }
       ],
-      "memos": [
-      ],
+      "memos": [],
       "resolved": [],
       "tbd": [],
       "id": 3

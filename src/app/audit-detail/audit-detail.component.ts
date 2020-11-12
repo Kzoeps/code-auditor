@@ -57,6 +57,7 @@ export class AuditDetailComponent implements OnInit {
     memoMoveSection: [''],
     resolvedMoveSection: [''],
     tbdMoveSection: [''],
+    assignToMemoBox: [''],
   });
 
   ngOnInit(): void {
@@ -165,5 +166,27 @@ export class AuditDetailComponent implements OnInit {
     const sectionsList = [this.memos, this.resolved, this.tbd];
     const memoIndex = sectionsList[memoFrom].indexOf(memo);
     sectionsList[memoFrom].splice(memoIndex, 1);
+  }
+
+  removeAssigneeMemo(assignee: User, memo: Memo): void {
+    const assigneeIndex = memo.assignedTo.indexOf(assignee);
+    memo.assignedTo.splice(assigneeIndex, 1);
+  }
+
+  findAssignee(memo: Memo, assignee: User): boolean {
+    let userFound = false;
+    for (const users of memo.assignedTo) {
+      if (users.id === assignee.id) {
+        userFound = true;
+      }
+    }
+    return (userFound);
+  }
+
+  memoAssignUpdate(memo: Memo): void {
+    const assignee = this.auditForm.value.assignToMemoBox;
+    if (!(this.findAssignee(memo, assignee))) {
+      memo.assignedTo.push(assignee);
+    }
   }
 }

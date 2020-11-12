@@ -94,9 +94,16 @@
 }
 
 .memoBoxAssignee {
-  margin: 0 5px 5px 5px;
+  display: flex;
+  width: 165px;
+  border: solid 1px black;
+  justify-content: space-between;
+  margin: 3px 5px 5px 5px;
 }
 
+.memoBoxAssigneeDescription{
+  margin: 10px 5px 5px 5px;
+}
 .moveSection {
   display: flex;
   justify-content: space-between;
@@ -119,7 +126,8 @@
 
 .editRemove {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  text-align: right;
 }
 
 .editMemoButton {
@@ -132,4 +140,31 @@
   margin-right: 10px;
   color: red;
   cursor: pointer;
+}
+
+.memoDescriptionBox {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.memoUpdateAssignees{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0 5px 5px;
+}
+
+.removeAssigneeBtn {
+  color: red;
+  font-size: 0.8rem;
+  width: 13px;
+  height: 13px;
+  border: solid 1px black;
+  text-align: center;
+  margin: 3px 3px 0 0;
+  cursor: pointer;
+}
+
+.assignToMemoBox{
+  display: flex;
+  justify-content: space-between;
 }

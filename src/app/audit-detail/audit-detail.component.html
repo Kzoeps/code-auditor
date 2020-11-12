@@ -76,14 +76,9 @@
   <div class="memoInMemos">
     <div class="memosContainer" *ngIf="memos">
       <div class="memoBox" *ngFor="let memo of memos">
-        <div class="editRemove">
-          <button class="editMemoButton">
-            Edit
-          </button>
-          <span class="removeMemo" (click)="removeMemo(memo, 0)">X</span>
-        </div>
         <div class="moveSection">
-          <p>{{memo.description}}</p>
+          <textarea class="memoDescriptionBox" [(ngModel)]="memo.description" [ngModelOptions]="{standalone: true}"
+                    required>{{memo.description}}</textarea>
           <select class="sectionBox" formControlName="memoMoveSection" [(ngModel)]="auditForm.value.memoMoveSection">
             <option *ngFor="let section of sections" [ngValue]="section">{{section}}</option>
           </select>
@@ -92,9 +87,31 @@
           </button>
         </div>
         <hr/>
-        <p class="memoBoxAssignLabel">Assigned to:</p>
-        <div *ngFor="let assignee of memo.assignedTo" class="memoBoxAssignee">
-          {{assignee.firstName}} {{assignee.lastName}}; ID: {{assignee.id}}
+        <div class="assignToMemoBox">
+          <div class="memoBoxAssignLabel">Assign to:</div>
+          <select formControlName="assignToMemoBox" [(ngModel)]="auditForm.value.assignToMemoBox">
+            <option *ngFor="let user of audit.auditee.teamMembers" [ngValue]="user">
+              {{user.firstName}} {{user.lastName}}
+            </option>
+            <option
+              [ngValue]="audit.auditee.teamLead">{{audit.auditee.teamLead.firstName}} {{audit.auditee.teamLead.lastName}}</option>
+          </select>
+          <button (click)="memoAssignUpdate(memo)">
+            Assign
+          </button>
+        </div>
+        <div class="memoUpdateAssignees" *ngIf="memo.assignedTo.length > 0">
+          <div *ngFor="let assignee of memo.assignedTo" class="memoBoxAssignee">
+            <div class="memoBoxAssigneeDescription">
+              {{assignee.firstName}} {{assignee.lastName}}; ID: {{assignee.id}}
+            </div>
+            <div class="removeAssigneeBtn" (click)="removeAssigneeMemo(assignee, memo)">
+              X
+            </div>
+          </div>
+        </div>
+        <div class="editRemove">
+          <button class="removeMemo" (click)="removeMemo(memo, 0)">remove</button>
         </div>
       </div>
     </div>
