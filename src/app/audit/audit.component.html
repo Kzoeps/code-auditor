@@ -1,4 +1,8 @@
 <app-nav></app-nav>
-<ul *ngIf="auditTeams">
-  <li *ngFor="let audit of auditTeams" class="auditees">Auditee Team Name : <a href="/audit-detail/{{audit.id}}">{{audit.auditee.teamName | titlecase}}</a></li>
-</ul>
+<h3 class="headers futura margin100left">All Audits</h3>
+<div class="margin100left">
+  <ul *ngIf="auditTeams" class="sans-serif">
+    <li *ngFor="let audit of auditTeams" class="auditees">Auditee Team Name : <a
+      href="/audit-detail/{{audit.id}}">{{audit.auditee.teamName | titlecase}}</a></li>
+  </ul>
+</div>

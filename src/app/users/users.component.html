@@ -1,8 +1,9 @@
 <app-nav></app-nav>
-<div *ngFor="let user of users">
+<h3 class="futura margin100left headers">ALL USERS</h3>
+<div *ngFor="let user of users" class="margin100left">
   <ul>
     <li>
-      <a routerLink="/user-detail/{{user.id}}">
+      <a routerLink="/user-detail/{{user.id}}" class="sans-serif">
         {{user.id}} : {{user.firstName}} {{user.lastName}}
       </a>
     </li>

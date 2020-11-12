@@ -9,6 +9,7 @@ import {User} from '../user';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+// TODO: put toast onSubmit
 export class SignUpComponent implements OnInit {
 
   @Input() fromAddUser: boolean;
@@ -43,12 +44,11 @@ export class SignUpComponent implements OnInit {
         .subscribe(user => {
           this.doesUserExist = user;
           if (this.doesUserExist.length !== 0) {
-            console.log('User already exists');
             this.isEmailValid = false;
           } else {
             this.userService.registerUser(this.user)
               .subscribe(() => {
-                console.log('user registered');
+                console.log('user registered, toast heere');
               });
             this.isEmailValid = true;
           }

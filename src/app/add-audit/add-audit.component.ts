@@ -5,7 +5,6 @@ import {Team} from '../team';
 import {AuditService} from '../audit.service';
 import {Audit} from '../audit';
 
-// TODO: clear error message when form is submitted
 @Component({
   selector: 'app-add-audit',
   templateUrl: './add-audit.component.html',

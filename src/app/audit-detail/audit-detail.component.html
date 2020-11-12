@@ -1,15 +1,15 @@
 <app-nav></app-nav>
-<!-- TODO: teammemvers no repetition -->
-<form *ngIf="audit" [formGroup]="auditForm">
-  <h3>Auditee: {{audit.auditee.teamName}} Details</h3>
+<!-- TODO: team members no repetition if in another auditor team-->
+<form *ngIf="audit" [formGroup]="auditForm" class="margin100left sans-serif">
+  <h3 class="headers futura">Auditee: {{audit.auditee.teamName | titlecase}} Details</h3>
   <h4 *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</h4>
-  <label>
+  <label class="sans-serif">
     Audit ID :
     <br/>
     {{audit.id}}
   </label>
   <br/>
-  <label>
+  <label class="sans-serif">
     <h4 class="auditee">Auditee : {{audit.auditee.teamName | titlecase}} </h4>
     Team Lead : {{audit.auditee.teamLead.firstName}} {{audit.auditee.teamLead.lastName}};
     ID:{{audit.auditee.teamLead.id}};
@@ -18,7 +18,7 @@
       ID:{{auditeeMember.id}}</div>
   </label>
   <br/>
-  <label>
+  <label class="sans-serif">
     <h4>Auditor: <span *ngFor="let team of audit.auditor">{{team.teamName | titlecase}},</span></h4>
     <div class="auditors">
       <div class="auditorBox" *ngFor="let team of audit.auditor">
@@ -30,10 +30,10 @@
     </div>
   </label>
   <br/>
-  <label>
+  <label class="sans-serif">
     <h4>Audit Start Date : {{audit.auditStartDate | date}}</h4>
   </label>
-  <label>
+  <label class="sans-serif">
     <h4 class="lowMarginBot">Status :</h4>
     <select required formControlName="status" [compareWith]="byStatus">
       <option *ngFor="let statusOption of status" [ngValue]="statusOption">
@@ -42,15 +42,15 @@
     </select>
   </label>
   <div formGroupName="memo">
-    <h4>Memo</h4>
+    <h4 class="headers futura">Memo</h4>
     <h5 class="errorMessage" *ngIf="memoErrorMessage">{{memoErrorMessage}}</h5>
     <div class="memo">
-      <label>
+      <label class="sans-serif">
         Description :
         <br/>
         <textarea required formControlName="description"></textarea>
       </label>
-      <label>
+      <label class="sans-serif">
         Assign To :
         <br/>
         <select required formControlName="assignedTo">
@@ -61,7 +61,7 @@
         </select>
         <br/>
         <button (click)="assign()">Assign</button>
-        <div *ngIf="memoAssignees">
+        <div *ngIf="memoAssignees" class="sans-serif">
           <div *ngFor="let assignee of memoAssignees" class="memoAssignees">
             <div>{{assignee.firstName}} {{assignee.lastName}}; ID:{{assignee.id}}</div>
             <div class="remove" (click)="removeAssignee(assignee)">X</div>
@@ -117,7 +117,7 @@
     </div>
   </div>
   <div class="resolved">
-    <h4>Resolved</h4>
+    <h4 class="headers futura">Resolved</h4>
     <div class="memosContainer" *ngIf="resolved">
       <div class="memoBox" *ngFor="let memo of resolved">
         <div class="moveSection">
@@ -139,7 +139,7 @@
     </div>
   </div>
   <div class="tbd">
-    <h4>To Be Discussed</h4>
+    <h4 class="headers futura">To Be Discussed</h4>
     <div class="memosContainer" *ngIf="tbd">
       <div class="memoBox" *ngFor="let memo of tbd">
         <div class="moveSection">

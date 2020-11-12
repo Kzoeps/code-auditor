@@ -1,9 +1,10 @@
 <app-nav></app-nav>
-<div *ngFor="let team of teams">
+<h3 class="futura margin100left headers">Teams</h3>
+<div *ngFor="let team of teams" class="margin100left sans-serif">
   <ul>
     <li>
       <a routerLink="/team-detail/{{team.id}}">
-        {{team.teamName}}
+        {{team.teamName | titlecase}}
       </a>
     </li>
   </ul>

@@ -1,6 +1,17 @@
 .registerButton {
   margin-top: 20px;
 }
+
 .roles {
   margin-top: 20px;
+}
+
+.formContainer {
+  padding-left: 100px;
+  margin-top: 50px;
+}
+
+.header{
+  text-decoration: underline;
+  margin-left: 100px;
 }
