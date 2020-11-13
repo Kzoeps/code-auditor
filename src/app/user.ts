@@ -10,4 +10,7 @@ export interface User {
   role: string;
   leadOnTeams: string[];
   memberOnTeams: string[];
+  admin: boolean;
+  approved: boolean;
+  loggedIn: boolean;
 }
