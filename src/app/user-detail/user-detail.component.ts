@@ -21,6 +21,8 @@ export class UserDetailComponent implements OnInit {
   }
 
   user: User;
+  isAdmin: boolean;
+  isEditable: boolean;
   roles = [
     'Frontend',
     'Backend',
@@ -32,6 +34,10 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    const id = this.route.snapshot.paramMap.get('id');
+    if (localStorage.getItem('isAdmin') === 'true' || localStorage.getItem('uid') === id) {
+      this.isEditable = true;
+    }
   }
 
   getUser(): void {
@@ -39,6 +45,9 @@ export class UserDetailComponent implements OnInit {
     this.userService.getUserById(id)
       .subscribe(user => {
         this.user = user;
+        if (user.email === 'admin@admin.com') {
+          this.isAdmin = true;
+        }
       });
   }
 

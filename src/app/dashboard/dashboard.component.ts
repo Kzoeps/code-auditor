@@ -13,14 +13,17 @@ export class DashboardComponent implements OnInit {
   }
 
   users: User[];
-
+  user: User;
   ngOnInit(): void {
     this.getUsers();
   }
 
   getUsers(): void {
-    this.userService.getUsers()
-      .subscribe(users => this.users = users);
+    const id = +localStorage.getItem('uid');
+    this.userService.getUserById(id)
+      .subscribe((user) => {
+        this.user = user;
+      });
   }
 
 }

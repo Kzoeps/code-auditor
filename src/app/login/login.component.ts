@@ -36,8 +36,14 @@ export class LoginComponent implements OnInit {
         for (const eachUser of user) {
           if (eachUser.email === email && eachUser.password === password) {
             localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('uid', String(eachUser.id));
             match = true;
             this.errorMsg = '';
+            if (eachUser.email === 'admin@admin.com') {
+              localStorage.setItem('isAdmin', 'true');
+            } else {
+              localStorage.setItem('isAdmin', 'false');
+            }
             this.router.navigate(['/dashboard']);
           }
         }

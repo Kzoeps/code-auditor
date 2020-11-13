@@ -54,11 +54,12 @@ export class SignUpComponent implements OnInit {
             this.isEmailValid = false;
           } else {
             this.userService.registerUser(this.user)
-              .subscribe(() => {
+              .subscribe((registeredUser) => {
                 this.toast.success('User Registered succesfully');
                 this.userForm.reset();
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('email', this.user.email);
+                localStorage.setItem('uid', String(registeredUser.id));
                 this.router.navigate(['/dashboard']);
               });
             this.isEmailValid = true;

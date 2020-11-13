@@ -1,6 +1,6 @@
 <!-- TODO: add memberOnTeams and teamLead-->
 <app-nav></app-nav>
-<div *ngIf="user" class="margin100left">
+<div *ngIf="user && isEditable" class="margin100left">
   <h3 class="headers futura">{{user.firstName | titlecase}} {{user.lastName | titlecase}} Details</h3>
   <p>User ID : {{user.id}}</p>
   <label class="input sans-serif">
@@ -18,7 +18,8 @@
   <label class="sans-serif">
     Email :
     <br/>
-    <input class="input" [(ngModel)]="user.email" placeholder="email" required>
+    <input *ngIf="!isAdmin" class="input" [(ngModel)]="user.email" placeholder="email" required>
+    <p *ngIf="isAdmin">{{user.email}}</p>
   </label>
   <br/>
   <label class="sans-serif">
@@ -49,4 +50,49 @@
   </label>
   <br/>
   <button (click)="updateUser()">Update</button>
+</div>
+<div *ngIf="!isEditable" class="margin100left"><p>User ID : {{user.id}}</p>
+  <label class="input sans-serif">
+    First Name :
+    <br/>
+    <p>{{user.firstName}}</p>
+  </label>
+  <br/>
+  <label class="sans-serif">
+    Last Name :
+    <br/>
+    <p>{{user.lastName}}</p>
+  </label>
+  <br/>
+  <label class="sans-serif">
+    Email :
+    <br/>
+    <p>{{user.email}}</p>
+  </label>
+  <br/>
+  <label class="sans-serif">
+    <span class="label">Role :</span>
+    <br/>
+    <p>{{user.role}}</p>
+  </label>
+  <br/>
+  <br/>
+  <label>
+    <p>Teams Leading/ Led : </p>
+    <ul>
+      <span class="sans-serif" *ngFor="let team of user.leadOnTeams">
+        <li>{{team | titlecase}}</li>
+      </span>
+    </ul>
+  </label>
+  <br/>
+  <label class="sans-serif">
+    <p class="memberTeams">Member on teams :</p>
+    <ul>
+      <span class="sans-serif" *ngFor="let team of user.memberOnTeams">
+        <li>{{team | titlecase}}</li>
+      </span>
+    </ul>
+  </label>
+  <br/>
 </div>
