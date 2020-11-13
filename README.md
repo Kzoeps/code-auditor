@@ -1,6 +1,6 @@
 # Code Auditor  (Karma Yoezer)
 
-This is my project for the SELISE phase 2 interview. The code audit management app allows users to assign teams to audit work and to create memos. more details of it is saved as a pdf file in the root folder. 
+This is my project for the SELISE phase 2 interview. The code audit management app allows users to assign teams to audit work and to create memos. more details of it is saved as code-audit-tracker.pdf file in the root folder. 
 
 ## Development server
 
@@ -8,28 +8,15 @@ First run `json-server --watch db.json` to run the backend server.
 
 Then run `ng serve --open` in another terminal tab for a dev server which will automatically navigate to `https://localhost:4200`. The app will automatically reload if you change any of the source files.
 
-## TO-DOs
+## Important Info
+The Admin Email is: admin@admin.com
 
-- [ ] Auth Guards
-- [X] Build sign up form
-- [X] Build Login Form
-- [X] Hook it up with the backend
-- [X] Build view for list of users
-- [X] Build view for list of teams
-- [ ] Build Edit teams view
-- [X] Make team members an object of users
-- [X] update user profile when added to team
-## Build
+password is: admin@123.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+For the authentication and the privlige of each user I could only finish about half and was unable to finish the privilege for audit. 
+This is in reference to only auditor team members being able to assign audits. Due to time shortage I was unable to work on the UI as well so it is very skeletal.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+All the functionalities have been created but like i said the authentication and the privilige of who gets to use the functionalities is half done as i havent completed it fully.
 
 ## Further help
 
