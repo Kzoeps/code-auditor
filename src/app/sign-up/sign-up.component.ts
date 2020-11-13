@@ -43,6 +43,8 @@ export class SignUpComponent implements OnInit {
       this.passwordsMatch = true;
       this.userForm.value.email = this.userForm.value.email.trim();
       this.user = this.userForm.value;
+      this.user.admin = false;
+      this.user.approved = false;
       this.user.leadOnTeams = [];
       this.user.memberOnTeams = [];
       this.userService.getUser(this.userForm.value.email)

@@ -1,6 +1,19 @@
 {
   "users": [
     {
+      "firstName": "admin",
+      "lastName": "admin",
+      "email": "admin@admin.com",
+      "password": "admin@123",
+      "confirmPassword": "admin@123",
+      "role": "Backend",
+      "leadOnTeams": [],
+      "memberOnTeams": [],
+      "id": 42,
+      "admin": true,
+      "approved": true
+    },
+    {
       "firstName": "thinley",
       "lastName": "yoezer",
       "email": "kzoepa@gmail.com",
