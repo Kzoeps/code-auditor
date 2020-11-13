@@ -3,6 +3,7 @@ import {Validators} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {UserService} from '../user.service';
 import {User} from '../user';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,7 @@ export class SignUpComponent implements OnInit {
   user: User;
   doesUserExist: User[];
 
-  constructor(private userService: UserService, private fb: FormBuilder) {
+  constructor(private userService: UserService, private fb: FormBuilder, private toast: ToastrService) {
   }
 
   userForm = this.fb.group({
@@ -48,7 +49,8 @@ export class SignUpComponent implements OnInit {
           } else {
             this.userService.registerUser(this.user)
               .subscribe(() => {
-                console.log('user registered, toast heere');
+                this.toast.success('User Registered succesfully');
+                this.userForm.reset();
               });
             this.isEmailValid = true;
           }

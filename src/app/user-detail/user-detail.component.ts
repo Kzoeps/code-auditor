@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../user.service';
 import {User} from '../user';
+import {ToastrService} from 'ngx-toastr';
 
 // TODO: Validations to make sure min length and also no blanks
 // TODO: toast on updateUser()
@@ -15,6 +16,7 @@ export class UserDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
+    private toast: ToastrService
   ) {
   }
 
@@ -42,6 +44,8 @@ export class UserDetailComponent implements OnInit {
 
   updateUser(): void {
     this.userService.updateUser(this.user)
-      .subscribe();
+      .subscribe(() => {
+        this.toast.success('Successfully updated!');
+      });
   }
 }

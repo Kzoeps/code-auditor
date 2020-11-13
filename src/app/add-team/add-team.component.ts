@@ -4,6 +4,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {TeamService} from '../team.service';
 import {User} from '../user';
 import {UserService} from '../user.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-team',
@@ -12,7 +13,7 @@ import {UserService} from '../user.service';
 })
 export class AddTeamComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private teamService: TeamService, private userService: UserService) {
+  constructor(private fb: FormBuilder, private teamService: TeamService, private userService: UserService, private toast: ToastrService) {
   }
 
   users: User[];
@@ -75,6 +76,8 @@ export class AddTeamComponent implements OnInit {
                   this.teamService.createTeam(this.team)
                     .subscribe(() => {
                       this.errorMessage = '';
+                      this.toast.success('Created Team');
+                      this.teamForm.reset();
                     });
                 }
               });

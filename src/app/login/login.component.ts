@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import {FormBuilder} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userService: UserService) {
   }
 
   loginForm = this.fb.group({
@@ -20,8 +21,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(): void{
-    console.log(this.loginForm.value);
+  onSubmit(): void {
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.passwords;
+    this.userService.getUsers()
+      .subscribe((user) => {
+        for (const eachUser of user) {
+          if (eachUser.email === email && eachUser.password === password) {
+            localStorage.setItem('isLoggedIn', 'true');
+          }
+        }
+      });
   }
 
 }

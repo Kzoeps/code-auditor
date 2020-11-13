@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "firstName": "karma",
+      "firstName": "thinley",
       "lastName": "yoezer",
       "email": "kzoepa@gmail.com",
       "password": "kopa123",
@@ -11,12 +11,13 @@
         "aviato",
         "dasfasdf",
         "dasfasdf",
-        "sadfasdf"
+        "sadfasdf",
+        "goooble"
       ],
       "memberOnTeams": [
-        "thousands",
         "adsfadsf",
-        "carbs"
+        "carbs",
+        "thousands"
       ],
       "id": 1
     },
@@ -28,12 +29,13 @@
       "confirmPassword": "hopscotch",
       "role": "Quality Assurance",
       "leadOnTeams": [
-        "thousands",
-        "carbs"
+        "carbs",
+        "thousands"
       ],
       "memberOnTeams": [
         "sadfasdf",
-        "adsfadsf"
+        "adsfadsf",
+        "goooble"
       ],
       "id": 2
     }
@@ -269,6 +271,49 @@
         }
       ],
       "id": 5
+    },
+    {
+      "teamName": "goooble",
+      "dateEstd": "2020-11-05",
+      "teamLead": {
+        "firstName": "thinley",
+        "lastName": "yoezer",
+        "email": "kzoepa@gmail.com",
+        "password": "kopa123",
+        "confirmPassword": "kopa123",
+        "role": "Frontend",
+        "leadOnTeams": [
+          "aviato",
+          "dasfasdf",
+          "dasfasdf",
+          "sadfasdf",
+          "goooble"
+        ],
+        "id": 1
+      },
+      "teamMembers": [],
+      "id": 6,
+      "addTeamMember": {
+        "firstName": "thinley",
+        "lastName": "yoezer",
+        "email": "kzoepa@gmail.com",
+        "password": "kopa123",
+        "confirmPassword": "kopa123",
+        "role": "Frontend",
+        "leadOnTeams": [
+          "aviato",
+          "dasfasdf",
+          "dasfasdf",
+          "sadfasdf",
+          "gmailss"
+        ],
+        "memberOnTeams": [
+          "adsfadsf",
+          "carbs",
+          "thousands"
+        ],
+        "id": 1
+      }
     }
   ],
   "audit": [
@@ -777,6 +822,100 @@
       "tbd": [],
       "resolved": [],
       "id": 4
+    },
+    {
+      "auditee": {
+        "teamName": "sadfasdf",
+        "dateEstd": "2020-11-18",
+        "teamLead": {
+          "firstName": "karma",
+          "lastName": "yoezer",
+          "email": "kzoepa@gmail.com",
+          "password": "kopa123",
+          "confirmPassword": "kopa123",
+          "role": "Frontend",
+          "leadOnTeams": [
+            "aviato",
+            "dasfasdf",
+            "dasfasdf",
+            "sadfasdf"
+          ],
+          "memberOnTeams": [
+            "thousands"
+          ],
+          "id": 1
+        },
+        "teamMembers": [
+          {
+            "firstName": "jigme ",
+            "lastName": "tashi",
+            "email": "jt@gmail.com",
+            "password": "hopscotch",
+            "confirmPassword": "hopscotch",
+            "role": "Quality Assurance",
+            "leadOnTeams": [
+              "thousands"
+            ],
+            "memberOnTeams": [
+              "sadfasdf"
+            ],
+            "id": 2
+          }
+        ],
+        "id": 3
+      },
+      "auditStartDate": "2020-11-04",
+      "status": "cancelled",
+      "auditor": [
+        {
+          "teamName": "carbs",
+          "dateEstd": "2020-11-04",
+          "teamLead": {
+            "firstName": "jigme ",
+            "lastName": "tashi",
+            "email": "jt@gmail.com",
+            "password": "hopscotch",
+            "confirmPassword": "hopscotch",
+            "role": "Quality Assurance",
+            "leadOnTeams": [
+              "thousands",
+              "carbs"
+            ],
+            "memberOnTeams": [
+              "sadfasdf",
+              "adsfadsf"
+            ],
+            "id": 2
+          },
+          "teamMembers": [
+            {
+              "firstName": "karma",
+              "lastName": "yoezer",
+              "email": "kzoepa@gmail.com",
+              "password": "kopa123",
+              "confirmPassword": "kopa123",
+              "role": "Frontend",
+              "leadOnTeams": [
+                "aviato",
+                "dasfasdf",
+                "dasfasdf",
+                "sadfasdf"
+              ],
+              "memberOnTeams": [
+                "thousands",
+                "adsfadsf",
+                "carbs"
+              ],
+              "id": 1
+            }
+          ],
+          "id": 5
+        }
+      ],
+      "memos": [],
+      "tbd": [],
+      "resolved": [],
+      "id": 5
     }
   ]
 }
