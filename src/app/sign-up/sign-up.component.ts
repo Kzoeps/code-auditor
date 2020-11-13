@@ -4,6 +4,7 @@ import {FormBuilder} from '@angular/forms';
 import {UserService} from '../user.service';
 import {User} from '../user';
 import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,7 +18,7 @@ export class SignUpComponent implements OnInit {
   user: User;
   doesUserExist: User[];
 
-  constructor(private userService: UserService, private fb: FormBuilder, private toast: ToastrService) {
+  constructor(private userService: UserService, private fb: FormBuilder, private toast: ToastrService, private router: Router) {
   }
 
   userForm = this.fb.group({
@@ -32,6 +33,9 @@ export class SignUpComponent implements OnInit {
   isEmailValid = true;
 
   ngOnInit(): void {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   onSubmit(): void {
@@ -51,6 +55,9 @@ export class SignUpComponent implements OnInit {
               .subscribe(() => {
                 this.toast.success('User Registered succesfully');
                 this.userForm.reset();
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('email', this.user.email);
+                this.router.navigate(['/dashboard']);
               });
             this.isEmailValid = true;
           }

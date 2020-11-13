@@ -38,6 +38,17 @@
         "goooble"
       ],
       "id": 2
+    },
+    {
+      "firstName": "thinley",
+      "lastName": "diorji",
+      "email": "td@gmail.com",
+      "password": "td@123",
+      "confirmPassword": "td@123",
+      "role": "Backend",
+      "leadOnTeams": [],
+      "memberOnTeams": [],
+      "id": 3
     }
   ],
   "team": [

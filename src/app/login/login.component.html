@@ -1,6 +1,7 @@
 <app-nav></app-nav>
 <h3 class="futura header">Login</h3>
 <div class="formContainer">
+  <h4 *ngIf="errorMsg" class="errorMessage">{{errorMsg}}</h4>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <label class="sans-serif">
       Email:
