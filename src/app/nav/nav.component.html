@@ -17,7 +17,15 @@
   <a routerLink="/teams">
     Teams
   </a>
-  <a routerLink="/audit">
-    audit
+  <a routerLink="/add-team">
+    Add Team
   </a>
+  <a routerLink="/audit">
+    Audits
+  </a>
+  <a routerLink="/add-audit">
+    Add Audit
+  </a>
+  <button (click)="logout()" *ngIf="loggedIn">Logout</button>
 </div>
+<hr/>

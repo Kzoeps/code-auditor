@@ -12,21 +12,23 @@ import {TeamDetailsComponent} from './team-details/team-details.component';
 import {AuditComponent} from './audit/audit.component';
 import {AddAuditComponent} from './add-audit/add-audit.component';
 import {AuditDetailComponent} from './audit-detail/audit-detail.component';
+import {AuthGuard} from './auth.guard';
+import {RoleGuard} from './role.guard';
 
 const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'users', component: UsersComponent},
-  {path: 'user-detail/:id', component: UserDetailComponent},
-  {path: 'add-user', component: AddUserComponent},
-  {path: 'teams', component: TeamComponent},
-  {path: 'add-team', component: AddTeamComponent},
-  {path: 'team-detail/:id', component: TeamDetailsComponent},
-  {path: 'audit', component: AuditComponent},
-  {path: 'add-audit', component: AddAuditComponent},
-  {path: 'audit-detail/:id', component: AuditDetailComponent}
+  {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
+  {path: 'user-detail/:id', component: UserDetailComponent, canActivate: [AuthGuard]},
+  {path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard, RoleGuard]},
+  {path: 'teams', component: TeamComponent, canActivate: [AuthGuard]},
+  {path: 'add-team', component: AddTeamComponent, canActivate: [AuthGuard, RoleGuard]},
+  {path: 'team-detail/:id', component: TeamDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'audit', component: AuditComponent, canActivate: [AuthGuard]},
+  {path: 'add-audit', component: AddAuditComponent, canActivate: [AuthGuard]},
+  {path: 'audit-detail/:id', component: AuditDetailComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

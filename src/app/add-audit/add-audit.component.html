@@ -1,5 +1,6 @@
 <app-nav></app-nav>
-<form [formGroup]="auditForm">
+<h3 class="headers futura margin100left">Add Audit</h3>
+<form [formGroup]="auditForm" class="margin100left">
   <h4 *ngIf="errorMessage">{{errorMessage}}</h4>
   <label class="labels">
     <p>Auditee : *</p>
@@ -31,7 +32,7 @@
     <input required formControlName="auditStartDate" type="date" placeholder="audit start date" class="inputs"/>
   </label>
   <br/>
-  <label>
+  <label class="sans-serif">
     <p>Status : *</p>
     <span class="inputs">{{auditForm.value.status}}</span>
   </label>

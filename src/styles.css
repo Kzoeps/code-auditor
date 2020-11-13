@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+p {
+  font-family: sans-serif;
+}
+.sans-serif {
+  font-family: sans-serif;
+}
+.futura {
+  font-family: Futura, sans-serif;
+}
+
+a{
+  text-decoration: none !important;
+  color: dodgerblue;
+  transition-duration: 0.5s;
+}
+
+a:hover{
+  color: orangered;
+  transition-duration: 0.5s;
+}
+
+.margin100left {
+  margin-left: 100px;
+}
+
+.headers {
+  text-decoration: underline;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.errorMessage {
+  color: red;
+}

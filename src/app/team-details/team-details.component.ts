@@ -5,6 +5,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../user';
 import {UserService} from '../user.service';
+import {ToastrService} from 'ngx-toastr';
 
 // TODO: make sure team lead not an option for users, while also making sure it is an option if changed.
 // basically if im the lead but on options i change then make available in members?
@@ -15,7 +16,11 @@ import {UserService} from '../user.service';
 })
 export class TeamDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private teamService: TeamService, private fb: FormBuilder, private userService: UserService) {
+  constructor(private route: ActivatedRoute,
+              private teamService: TeamService,
+              private fb: FormBuilder,
+              private userService: UserService,
+              private toast: ToastrService) {
   }
 
   errorMessage: string;
@@ -165,7 +170,10 @@ export class TeamDetailsComponent implements OnInit {
               this.addTeamToLead(teamForm.teamName);
               console.log(this.team);
               this.teamService.updateTeam(this.team)
-                .subscribe();
+                .subscribe(() => {
+                  this.errorMessage = '';
+                  this.toast.success('Successfully updated!');
+                });
               // console.log(this.team, 'update!');
             } else {
               this.errorMessage = 'Team Name already exists';

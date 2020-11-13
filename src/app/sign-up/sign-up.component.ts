@@ -3,19 +3,22 @@ import {Validators} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {UserService} from '../user.service';
 import {User} from '../user';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+// TODO: put toast onSubmit
 export class SignUpComponent implements OnInit {
 
   @Input() fromAddUser: boolean;
   user: User;
   doesUserExist: User[];
 
-  constructor(private userService: UserService, private fb: FormBuilder) {
+  constructor(private userService: UserService, private fb: FormBuilder, private toast: ToastrService, private router: Router) {
   }
 
   userForm = this.fb.group({
@@ -30,6 +33,9 @@ export class SignUpComponent implements OnInit {
   isEmailValid = true;
 
   ngOnInit(): void {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   onSubmit(): void {
@@ -37,18 +43,24 @@ export class SignUpComponent implements OnInit {
       this.passwordsMatch = true;
       this.userForm.value.email = this.userForm.value.email.trim();
       this.user = this.userForm.value;
+      this.user.admin = false;
+      this.user.approved = false;
       this.user.leadOnTeams = [];
       this.user.memberOnTeams = [];
       this.userService.getUser(this.userForm.value.email)
         .subscribe(user => {
           this.doesUserExist = user;
           if (this.doesUserExist.length !== 0) {
-            console.log('User already exists');
             this.isEmailValid = false;
           } else {
             this.userService.registerUser(this.user)
-              .subscribe(() => {
-                console.log('user registered');
+              .subscribe((registeredUser) => {
+                this.toast.success('User Registered succesfully');
+                this.userForm.reset();
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('email', this.user.email);
+                localStorage.setItem('uid', String(registeredUser.id));
+                this.router.navigate(['/dashboard']);
               });
             this.isEmailValid = true;
           }

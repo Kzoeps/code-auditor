@@ -9,9 +9,13 @@
   justify-content: space-between;
 }
 .removeButton {
-  margin-left: 5px;
+  margin: 5px 5px 5px 5px;
   font-size: 0.8rem;
   color: red;
+  width: 13px;
+  height: 13px;
+  border: 1px solid black;
+  text-align: center;
 }
 .memberDescription {
   margin: 5px;

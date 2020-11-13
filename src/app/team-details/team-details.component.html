@@ -1,8 +1,8 @@
 <!-- TODO: properly format the remove member button-->
 <app-nav></app-nav>
-<form *ngIf="team" [formGroup]="teamForm">
-  <h3>{{team.teamName}} Details</h3>
-  <h4 *ngIf="errorMessage">{{errorMessage}}</h4>
+<form *ngIf="team" [formGroup]="teamForm" class="sans-serif margin100left">
+  <h3 class="futura headers">{{team.teamName | titlecase}} Details</h3>
+  <h4 *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</h4>
   <label>
     Team ID :
     <br>
@@ -41,7 +41,8 @@
   </label>
   <div *ngFor="let member of teamMembersTeamForm" class="teamMembers">
     <span class="memberDescription">{{member.firstName | titlecase}} {{member.lastName | titlecase}}
-      ; ID: {{member.id}}</span> <span class="removeButton" (click)="removeMember(member.id)">X</span>
+      ; ID: {{member.id}}</span>
+    <div class="removeButton pointer" (click)="removeMember(member.id)">X</div>
   </div>
   <br/>
   <button class="updateButton" (click)="updateTeam()">Update</button>

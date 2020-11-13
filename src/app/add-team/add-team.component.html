@@ -1,46 +1,48 @@
 <app-nav></app-nav>
-<h4 *ngIf="errorMessage">{{errorMessage}}</h4>
-<form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
-  <label>
-    Team Name:
+<h3 class="headers margin100left futura">Add Team</h3>
+<h4 *ngIf="errorMessage" class="errorMessage margin100left">{{errorMessage}}</h4>
+<div class="formContainer">
+  <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+    <label class="sans-serif">
+      Team Name:
+      <br/>
+      <input type="text" formControlName="teamName" required/>
+    </label>
     <br/>
-    <input type="text" formControlName="teamName" required/>
-  </label>
-  <br/>
-  <label>
-    Date Estd:
+    <label class="sans-serif">
+      Date Estd:
+      <br/>
+      <input type="date" formControlName="dateEstd" required/>
+    </label>
     <br/>
-    <input type="date" formControlName="dateEstd" required/>
-  </label>
-  <br/>
-  <label>
-    Team Lead :
+    <label class="sans-serif">
+      Team Lead :
+      <br/>
+      <select required formControlName="teamLead">
+        <option *ngFor="let user of users" [value]="user.id">{{user.firstName}} {{user.lastName}}</option>
+      </select>
+    </label>
     <br/>
-    <select required formControlName="teamLead">
-      <option *ngFor="let user of users" [value]="user.id">{{user.firstName}} {{user.lastName}}</option>
-    </select>
-  </label>
-  <br/>
-  <label>
-    Team Members:
+    <label class="sans-serif">
+      Team Members:
+      <br/>
+      <select required formControlName="teamMembers">
+        <option *ngFor="let user of users" [value]="user.id">
+          <span>{{user.firstName}} {{user.lastName}}</span>
+        </option>
+      </select>
+      <button type="button" class="addButton" (click)="addMember()">
+        Add To Team
+      </button>
+    </label>
+    <div *ngFor="let member of teamMembers" class="teamMembers">
+      <div class="memberDescription sans-serif">{{member.firstName}} {{member.lastName}}; id: {{member.id}}</div>
+      <div class="removeButton pointer" (click)="removeMember(member.id)">X</div>
+    </div>
     <br/>
-    <select required formControlName="teamMembers">
-      <option *ngFor="let user of users" [value]="user.id">
-        <span>{{user.firstName}} {{user.lastName}}</span>
-      </option>
-    </select>
-    <button type="button" class="addButton" (click)="addMember()">
-      Add To Team
+    <br/>
+    <br/>
+    <button type="submit" [disabled]="!teamForm.valid">
+      Create Team
     </button>
-  </label>
-  <div *ngFor="let member of teamMembers" class="teamMembers">
-    <div class="memberDescription">{{member.firstName}} {{member.lastName}}; id: {{member.id}}</div>
-    <div class="removeButton" (click)="removeMember(member.id)">X</div>
-  </div>
-  <br/>
-  <br/>
-  <br/>
-  <button type="submit" [disabled]="!teamForm.valid">
-    Create Team
-  </button>
-</form>
+  </form>

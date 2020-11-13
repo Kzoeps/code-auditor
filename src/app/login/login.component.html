@@ -1,18 +1,22 @@
 <app-nav></app-nav>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label>
-    Email:
+<h3 class="futura header">Login</h3>
+<div class="formContainer">
+  <h4 *ngIf="errorMsg" class="errorMessage">{{errorMsg}}</h4>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label class="sans-serif">
+      Email:
+      <br/>
+      <input type="email" formControlName="email" required/>
+    </label>
     <br/>
-    <input type="email" formControlName="email" required/>
-  </label>
-  <br/>
-  <label>
-    Password:
+    <label class="sans-serif">
+      Password:
+      <br/>
+      <input type="password" formControlName="password" required/>
+    </label>
     <br/>
-    <input type="password" formControlName="password" required/>
-  </label>
-  <br/>
-  <button type="submit" [disabled]="!loginForm.valid" class="loginBtn">
-    Log In
-  </button>
-</form>
+    <button type="submit" [disabled]="!loginForm.valid" class="loginBtn sans-serif">
+      Log In
+    </button>
+  </form>
+</div>

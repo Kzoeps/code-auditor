@@ -4,8 +4,8 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Team} from '../team';
 import {AuditService} from '../audit.service';
 import {Audit} from '../audit';
+import {ToastrService} from 'ngx-toastr';
 
-// TODO: clear error message when form is submitted
 @Component({
   selector: 'app-add-audit',
   templateUrl: './add-audit.component.html',
@@ -13,7 +13,10 @@ import {Audit} from '../audit';
 })
 export class AddAuditComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private teamService: TeamService, private auditService: AuditService) {
+  constructor(private fb: FormBuilder,
+              private teamService: TeamService,
+              private auditService: AuditService,
+              private toast: ToastrService) {
   }
 
   teams: Team[];
@@ -79,7 +82,7 @@ export class AddAuditComponent implements OnInit {
       this.audit.resolved = [];
       this.auditService.createAudit(this.audit)
         .subscribe(audit => {
-          console.log(audit);
+          this.toast.success('Created Audit!');
         });
     }
   }

@@ -8,6 +8,7 @@ import {TeamService} from '../team.service';
 import {UserService} from '../user.service';
 import {Memo} from '../memo';
 import {User} from '../user';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-audit-detail',
@@ -21,7 +22,8 @@ export class AuditDetailComponent implements OnInit {
     private auditService: AuditService,
     private fb: FormBuilder,
     private teamService: TeamService,
-    private userService: UserService
+    private userService: UserService,
+    private toast: ToastrService
   ) {
   }
 
@@ -141,7 +143,7 @@ export class AuditDetailComponent implements OnInit {
     this.audit.resolved = this.resolved;
     this.auditService.updateAudit(this.audit)
       .subscribe(() => {
-        console.log(this.audit.id, 'succesfully updated. Put Toast Here updateAudit()');
+        this.toast.success('Updated Audit!');
       });
   }
 

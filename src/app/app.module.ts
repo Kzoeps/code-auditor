@@ -19,6 +19,8 @@ import { AuditComponent } from './audit/audit.component';
 import { AddAuditComponent } from './add-audit/add-audit.component';
 import { AuditDetailComponent } from './audit-detail/audit-detail.component';
 import {CommonModule} from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import {CommonModule} from '@angular/common';
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot()
     ],
   exports: [NavComponent],
   providers: [],

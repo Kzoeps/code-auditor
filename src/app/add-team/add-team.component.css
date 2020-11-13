@@ -3,10 +3,21 @@
 }
 .teamMembers {
   display: flex;
+  justify-content: space-between;
   margin: 10px 5px 0 5px;
+  border: 1px solid black;
+  width: 150px;
 }
 .removeButton {
-  margin-left: 5px;
+  margin: 5px 5px 5px 5px;
   font-size: 0.8rem;
+  text-align: center;
   color: red;
+  width: 13px;
+  height: 13px;
+  border: 1px solid black;
+}
+
+.formContainer {
+  margin-left: 100px;
 }

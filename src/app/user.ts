@@ -1,4 +1,3 @@
-import {Team} from './team';
 
 export interface User {
   id: number;
@@ -10,4 +9,7 @@ export interface User {
   role: string;
   leadOnTeams: string[];
   memberOnTeams: string[];
+  admin: boolean;
+  approved: boolean;
+  loggedIn: boolean;
 }
