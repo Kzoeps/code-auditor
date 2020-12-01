@@ -1,0 +1,22 @@
+{
+  "npmScope": "code-auditor",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "code-auditor": {
+      "tags": []
+    },
+    "code-auditor-e2e": {
+      "tags": []
+    }
+  }
+}
